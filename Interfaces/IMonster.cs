@@ -11,7 +11,7 @@ namespace OceanStory.Interfaces
         string Name { get; }
         int Hp { get; set; }
         int Level { get; }
-        int Atk { get; }
+        float Atk { get; }
         bool MosterDead { get; }
         void GetDamage (int damage);
     }
