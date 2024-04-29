@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OceanStory
+namespace OceanStory.Interfaces
 {
-    internal class StartScene : Scene
+    internal interface IMonster
     {
-        public override void RunScene()
-        {
-
-        }
     }
 }
