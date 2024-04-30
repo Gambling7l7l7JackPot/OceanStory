@@ -32,5 +32,22 @@ namespace OceanStory
                 return -1;
             }
         }
+        public int GetUserInput(int maxNum, string message)
+        {
+            Program.SystemMessage.PrintMessage();
+            Console.Write("\n"+ message +"\n>> ");
+            string s = Console.ReadLine();
+            int input = -1;
+            bool b = int.TryParse(s, out input);
+            if (b && (0 <= input && input <= maxNum))
+            {
+                return input;
+            }
+            else
+            {
+                Program.SystemMessage.SetMessage("잘못된 입력입니다.");
+                return -1;
+            }
+        }
     }
 }

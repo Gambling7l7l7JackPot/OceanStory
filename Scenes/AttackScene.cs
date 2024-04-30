@@ -8,60 +8,29 @@ using System.Threading.Tasks;
 
 namespace OceanStory.Scenes
 {
-    internal class AttackScene
+    internal class AttackScene : Scene
     {
-        public void BattleStart(List<IMonster> monsters)
+        public override void RunScene()
         {
-            Console.Clear();
-            int count = 0;
-            Console.WriteLine("Battle!!");
-            Console.WriteLine("");
-            foreach (IMonster monster in monsters)
+            while(true)
             {
-                count++;
-                Console.WriteLine($"[{count}]  Lv.{monster.Level} {monster.Name} HP {monster.Hp}");
-            }
-            Console.WriteLine("");
-            Console.WriteLine("[내정보]");
-            Console.WriteLine($"Lv.{Program.Character.Level} {Program.Character.Name} {Program.Character.Job}");
-            Console.WriteLine($"HP 100/{Program.Character.Hp}");
-            Console.WriteLine("");
-            Console.WriteLine("0. 취소");
-
-            int input = GetUserAttackInput(3);
-            switch (input)
-            {
-                case 0:
-                    return;
-                case 1:
-                    Program.BattleManager.AttackDamage(monsters, input);
-                    break;
-                case 2:
-                    Program.BattleManager.AttackDamage(monsters, input);
-                    break;
-                case 3:
-                    Program.BattleManager.AttackDamage(monsters, input);
-
-                    break;
-                default:
-                    break;
-            }
-        }
-        public int GetUserAttackInput(int maxNum)
-        {
-            Program.SystemMessage.PrintMessage();
-            Console.Write("\n대상을 선택해주세요.\n>> ");
-            string s = Console.ReadLine();
-            int input = -1;
-            bool b = int.TryParse(s, out input);
-            if (b && 0 <= input && input <= maxNum)
-            {
-                return input;
-            }
-            else
-            {
-                Program.SystemMessage.SetMessage("잘못된 입력입니다.");
-                return -1;
+                Console.Clear();
+                Console.WriteLine("Battle!!");
+                Console.WriteLine($"\n{Program.Character.Name} 의 공격!");
+                Console.WriteLine("Lv.{0} {1} 을(를) 맞췄습니다. [데미지 : {2}]",
+                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Level,
+                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Name,
+                    Program.BattleManager.TargetDamage);
+                Console.WriteLine("\nLv.{0} {1}",
+                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Level,
+                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Name);
+                Console.WriteLine("HP {0} -> {1}",
+                    Program.BattleManager.TargetBeforeHp,
+                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].MonsterDead ?
+                    "Dead" : Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Hp);
+                Console.WriteLine("\n0. 다음");
+                int input = Program.SceneManager.GetUserInput(0);
+                if (input == 0) return;
             }
         }
     }

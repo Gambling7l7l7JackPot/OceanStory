@@ -12,8 +12,7 @@ namespace OceanStory.Interfaces
         int Hp { get; set; }
         int Level { get; }
         float Atk { get; }
-        bool MosterDead { get; }
-        void GetDamage (int damage);
+        bool MonsterDead { get; set; }
         double MaxHp { get; set; }
     }
 }
