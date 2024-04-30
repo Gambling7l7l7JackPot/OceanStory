@@ -31,7 +31,6 @@ namespace OceanStory
                 Program.SystemMessage.SetMessage("잘못된 입력입니다.");
                 return -1;
             }
-
         }
     }
 }

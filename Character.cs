@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OceanStory.Interfaces;
+using OceanStory.Scenes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,8 @@ namespace OceanStory
         public float Def { get; set; }
         public int Hp { get; set; }
         public int Gold { get; set; }
+        public int AttackDamage { get; set; }
+        public int MaxHp { get; set; }
         public bool CharacterDead => Hp <= 0; // 참, 거짓 값으로 Hp가 0보다 작거나 같을때
         public Character(int level, string name, string job, float atk, float def, int hp, int gold)
         {
@@ -25,6 +29,11 @@ namespace OceanStory
             Def = def;
             Hp = hp;
             Gold = gold;
+        }
+        public void SetAttackDamage(int attackDamage)
+        {
+            AttackDamage = attackDamage;
+            Console.WriteLine(AttackDamage);
         }
     }
 }

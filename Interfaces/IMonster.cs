@@ -14,5 +14,6 @@ namespace OceanStory.Interfaces
         float Atk { get; }
         bool MosterDead { get; }
         void GetDamage (int damage);
+        double MaxHp { get; set; }
     }
 }

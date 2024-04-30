@@ -13,6 +13,7 @@ namespace OceanStory.Monsters
         public int Hp { get; set; }
         public int Level { get; }
         public float Atk { get; }
+        public double MaxHp { get; set; }
         public bool MosterDead => Hp <= 0; // 참, 거짓 값으로 Hp가 0보다 작거나 같을때
         public Voidling(string name)
         {
@@ -20,6 +21,7 @@ namespace OceanStory.Monsters
             Hp = 10;
             Level = 3;
             Atk = 9;
+            MaxHp = 10;
         }
         public void GetDamage(int damage)
         {
