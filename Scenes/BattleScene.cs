@@ -54,7 +54,6 @@ namespace OceanStory.Scenes
                 {
                     Console.WriteLine("0. 취소");
                     input = Program.SceneManager.GetUserInput(Program.BattleManager.monsters.Count(), "대상을 선택해주세요.");
-                    Program.SystemMessage.PrintMessage();
                     if (0 <= input && input <= Program.BattleManager.monsters.Count())
                     {
                         if (input == 0)
@@ -65,15 +64,10 @@ namespace OceanStory.Scenes
                         {
                             if (!Program.BattleManager.monsters[input - 1].MonsterDead)
                             {
-                                Program.SystemMessage.SetMessage("");
                                 Program.BattleManager.AttackDamage(input);
                                 Program.SceneManager.ChangeScene("AttackScene");
                             }
                         }
-                    }
-                    else
-                    {
-                        Program.SystemMessage.SetMessage("잘못된 입력입니다");
                     }
                 }
             }
