@@ -5,21 +5,11 @@ namespace OceanStory.Scenes
 {
     internal class BattleScene : Scene
     {
-        private Character character;
-        private IMonster monster;
-        public BattleScene(Character character, IMonster monster)
-        {
-            this.character = character;
-            this.monster = monster;
-        }
-
         public override void RunScene()
         {
-            while (true)
-            {
                 Random random = new Random();
                 List<IMonster> monsters = new List<IMonster>();
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     int makeMonsters = random.Next(1, 4);
                     switch (makeMonsters)
@@ -47,16 +37,15 @@ namespace OceanStory.Scenes
                 }
                 Console.WriteLine("");
                 Console.WriteLine("[내정보]");
-                Console.WriteLine($"Lv.{character.Level} {character.Name} {(character.Job)}");
-                Console.WriteLine($"HP 100/{character.Hp}");
+                Console.WriteLine($"Lv.{Program.Character.Level} {Program.Character.Name} {(Program.Character.Job)}");
+                Console.WriteLine($"HP 100/{Program.Character.Hp}");
                 Console.WriteLine("");
                 Console.WriteLine("1. 공격");
                 Console.WriteLine("");
-
                 int input = Program.SceneManager.GetUserInput(2);
                 switch (input)
                 {
-                    case 1:
+                    case 1: 
 
                         break;
                     case 2:
@@ -67,6 +56,5 @@ namespace OceanStory.Scenes
                         break;
                 }
             }
-        }
     }
 }

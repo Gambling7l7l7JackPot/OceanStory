@@ -1,10 +1,13 @@
-﻿namespace OceanStory
+﻿using OceanStory.Interfaces;
+
+namespace OceanStory
 {
     internal class Program
     {
         public static SceneManager SceneManager;
         public static SystemMessage SystemMessage;
         public static Character Character;
+        public static IMonster Monster;
         static void Main(string[] args)
         {
             SceneManager = new SceneManager();
