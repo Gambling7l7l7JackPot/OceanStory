@@ -40,7 +40,9 @@ namespace OceanStory
             int input = -1;
             bool b = int.TryParse(s, out input);
             if (b && (0 <= input && input <= maxNum))
-            {
+            {  
+                if (input > 0 && Program.BattleManager.monsters[input - 1].MonsterDead)
+                    Program.SystemMessage.SetMessage("이미 죽은 몬스터입니다.");
                 return input;
             }
             else
