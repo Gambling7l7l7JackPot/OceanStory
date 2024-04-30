@@ -50,7 +50,7 @@ namespace OceanStory.Scenes
                 int input = Program.SceneManager.GetUserInput(3);
                 switch (input)
                 {
-                    case 1: Program.BattleManager.BattleStart(monsters);
+                    case 1: Program.AttackScene.BattleStart(monsters);
                         break;
                     case 2:
                         break;
