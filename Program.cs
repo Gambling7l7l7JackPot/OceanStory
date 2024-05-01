@@ -14,8 +14,7 @@ namespace OceanStory
         {
             SceneManager = new SceneManager();
             SystemMessage = new SystemMessage();
-            BattleManager = new BattleManager();
-            Character = new Character(1, "Chad", "전사", 10, 5, 100, 1500);
+            Character = new Character(1, "Chad", "전사", 10, 5, 100, 100, 1500);
             SceneManager.ChangeScene("StartScene");
         }
     }
