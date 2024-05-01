@@ -12,8 +12,8 @@ namespace OceanStory
         List<Item> itemList = new List<Item>();
         List<Item> equipItem = new List<Item>();
 
-        string infoAtk = "  공격력";
-        string infoDef = "  방어력";
+        string infoAtk = "  공격력 ";
+        string infoDef = "  방어력 ";
 
         public Inventory()
         {
@@ -33,7 +33,8 @@ namespace OceanStory
                 for (int i = 0; i < itemList.Count; i++)
                 {
                     string equipMark = equipItem.Contains(itemList[i]) ? "[E] " : ""; // 장착중이면 [E]표시 , 노장착중이면 아무런표시 없음
-                    Console.WriteLine($"{equipMark}{itemList[i].Name} ({itemList[i].Description}){(itemList[i].Atk != null ? infoAtk + " " + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + " " + itemList[i].Def : "")}");
+                    Console.WriteLine($"{equipMark}{itemList[i].Name} ({itemList[i].Description}){(itemList[i].Atk != null ? infoAtk + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + itemList[i].Def : "")}");
+                    // 장착 유무 + 템이름 + 템설명 + 공격력이 있는 아이템이면 공격력 출력하고 공격력 없는템이면 공백이 뜨도록 함 + 방어력아이템일 경우에만 방어력 수치 뜨도록 함
                 }
 
                 Console.WriteLine("\n\n0. 돌아가기");
@@ -63,7 +64,7 @@ namespace OceanStory
                 for(int i = 0; i < itemList.Count; i++)
                 {
                     string equipMark = equipItem.Contains(itemList[i]) ? "[E] " : ""; // 장착중이면 [E]표시 , 노장착중이면 아무런표시 없음
-                    Console.WriteLine($"{i+1}. {equipMark}{itemList[i].Name} ({itemList[i].Description}){(itemList[i].Atk != null ? infoAtk + " " + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + " " + itemList[i].Def : "")}");
+                    Console.WriteLine($"{i+1}. {equipMark}{itemList[i].Name} ({itemList[i].Description}){(itemList[i].Atk != null ? infoAtk + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + itemList[i].Def : "")}");
                 }
                 Console.WriteLine("\n\n0. 돌아가기\n");
 
