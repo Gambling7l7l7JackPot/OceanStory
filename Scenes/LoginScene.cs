@@ -38,10 +38,10 @@ namespace OceanStory.Scenes
                     switch (choiceJob)
                     {
                         case 1:
-                            character = new Warrior(1, Program.nickName, "전사", 10, 5, 100, 100,1500);
+                            character = new Warrior(1, Program.nickName, "전사", 10, 5, 100, 100,1500, 0);
                             break;
                         case 2:
-                            character = new Wizard(1, Program.nickName, "마법사", 15, 3, 80, 80, 1500);
+                            character = new Wizard(1, Program.nickName, "마법사", 15, 3, 80, 80, 1500, 0);
                             break;
                         default:
                             Console.WriteLine("잘못된 선택입니다. 처음부터 다시 진행하세요.");
