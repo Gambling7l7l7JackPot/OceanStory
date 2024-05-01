@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OceanStory
 {
-    internal class Character
+    internal abstract class Character
     {
         public int Level { get; set; }
         public string Name { get; set; }
