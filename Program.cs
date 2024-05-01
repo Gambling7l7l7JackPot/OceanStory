@@ -10,11 +10,13 @@ namespace OceanStory
         public static Character Character;
         public static IMonster Monster;
         public static BattleManager BattleManager;
+        public static RewardManager RewardManager;
         static void Main(string[] args)
         {
             SceneManager = new SceneManager();
             SystemMessage = new SystemMessage();
-            Character = new Character(1, "Chad", "전사", 10, 5, 100, 100, 1500);
+            Character = new Character(1, "Chad", "전사", 10, 5, 100, 100, 1500, 0);
+            RewardManager = new RewardManager();
             SceneManager.ChangeScene("StartScene");
         }
     }

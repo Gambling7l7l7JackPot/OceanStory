@@ -19,9 +19,10 @@ namespace OceanStory.Scenes
                 Console.WriteLine($"{Program.Character.Name} ( {Program.Character.Job} )");
                 Console.WriteLine($"공격력 : {Program.Character.Atk}");
                 Console.WriteLine($"방어력 : {Program.Character.Def}");
-                Console.WriteLine($"체 력 : {Program.Character.Hp}");
-                Console.WriteLine($"Gold : {Program.Character.Gold} G");
-                Console.WriteLine("1");
+                Console.WriteLine($"체 력  : {Program.Character.Hp}");
+                Console.WriteLine($"Gold   : {Program.Character.Gold} G");
+                Console.WriteLine($"Exp    : {Program.Character.Exp}");
+                Console.WriteLine("");
                 Console.WriteLine("0. 나가기");
 
                 switch (Program.SceneManager.GetUserInput(1))

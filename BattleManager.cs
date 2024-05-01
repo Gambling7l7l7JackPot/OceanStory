@@ -15,11 +15,12 @@ namespace OceanStory
     {
         public List<IMonster> monsters = new List<IMonster>();
         public int TargetIndex, TargetDamage;
-        public double TargetBeforeHp, PlayerBeforeHp;
+        public double TargetBeforeHp, PlayerBeforeHp, PlayerStartHp;
         public int Winner, DeadCount;
 
         public void MakeEnemy()
         {
+            PlayerStartHp = Program.Character.Hp;
             monsters.Clear();
             Random random = new Random();
             

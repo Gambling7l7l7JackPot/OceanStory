@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OceanStory.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,14 @@ namespace OceanStory.Scenes
                 Console.WriteLine("Battle!! - Result");
                 if (Program.BattleManager.Winner == 1)
                 {
+                    int beforeExp = Program.RewardManager.CharacterExpUp();
+                    int beforeLevel = Program.RewardManager.CharacterLevelUpCheck();
                     Console.WriteLine("\nVictory");
                     Console.WriteLine("\n던전에서 몬스터 {0}마리를 잡았습니다.", Program.BattleManager.monsters.Count());
-                    Console.WriteLine("\nLv.{0} {1}", Program.Character.Level, Program.Character.Name);
-                    Console.WriteLine("HP {0} -> {1}", Program.Character.MaxHp, Program.Character.Hp);
+                    Console.WriteLine("\n[캐릭터 정보]");
+                    Console.WriteLine("Lv.{0} {1} -> Lv.{2} {3}", beforeLevel, Program.Character.Name, Program.Character.Level, Program.Character.Name);
+                    Console.WriteLine("HP {0} -> {1}", Program.BattleManager.PlayerStartHp, Program.Character.Hp);
+                    Console.WriteLine("Exp {0} -> {1}", beforeExp, Program.Character.Exp);
                 }
                 else
                 {

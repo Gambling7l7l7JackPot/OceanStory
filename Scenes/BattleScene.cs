@@ -32,7 +32,7 @@ namespace OceanStory.Scenes
                 Console.WriteLine("");
                 Console.WriteLine("[내정보]");
                 Console.WriteLine($"Lv.{Program.Character.Level} {Program.Character.Name} {(Program.Character.Job)}");
-                Console.WriteLine($"HP {Program.Character.Hp}/100");
+                Console.WriteLine($"HP {Program.Character.Hp}/{Program.Character.MaxHp}");
                 Console.WriteLine("");
 
                 int input;
@@ -49,8 +49,7 @@ namespace OceanStory.Scenes
                             break;
                         case 2:
                             break;
-                        case 3:
-                            break;
+                        case 3: return;
                         default:
                             break;
                     }

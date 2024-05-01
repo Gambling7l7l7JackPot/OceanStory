@@ -15,6 +15,7 @@ namespace OceanStory.Monsters
         public float Atk { get; }
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
+        public int Exp { get; set; }
         public CanonMinion(string name)
         {
             Name = name;
@@ -23,6 +24,7 @@ namespace OceanStory.Monsters
             Atk = 8;
             MaxHp = 25;
             MonsterDead = false;
+            Exp = 10;
         }
     }
 }
