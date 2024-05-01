@@ -8,21 +8,31 @@ using System.Xml.Linq;
 
 namespace OceanStory
 {
+    enum ItemType
+    {
+        WEAPON = 1,
+        ARMOR,
+        HELM
+    }
+
     internal class Item
     {
         public string Name { get; }
         public string Description { get; }
         public int? Atk { get; }
         public int? Def { get; }
-        public bool isEquipped { get; set; }
+        public ItemType Type { get; }
+        
 
 
-        public Item(string name, string description, int? atk, int? def, bool isEquipped = false)
+        public Item(string name, string description, int? atk, int? def, ItemType type)
         {
             this.Name = name;
             this.Description = description;
             this.Atk = atk;
             this.Def = def;
+            this.Type = type;
+                
         }
     }
 }
