@@ -32,16 +32,16 @@ namespace OceanStory
                 return -1;
             }
         }
-        public int GetUserInput(int maxNum, string message)
+        public int GetUserInput(int maxNum, string message, int error)
         {
             Program.SystemMessage.PrintMessage();
-            Console.Write("\n"+ message +"\n>> ");
+            Console.Write("\n" + message +"\n>> ");
             string s = Console.ReadLine();
             int input = -1;
             bool b = int.TryParse(s, out input);
             if (b && (0 <= input && input <= maxNum))
             {  
-                if (input > 0 && Program.BattleManager.monsters[input - 1].MonsterDead)
+                if (error == 1 && input > 0 && Program.BattleManager.monsters[input - 1].MonsterDead)
                     Program.SystemMessage.SetMessage("이미 죽은 몬스터입니다.");
                 return input;
             }

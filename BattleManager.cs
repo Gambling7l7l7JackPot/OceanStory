@@ -50,7 +50,8 @@ namespace OceanStory
             TargetIndex = input - 1;
             TargetBeforeHp = monsters[input - 1].Hp;
             double monstersHp = monsters[input - 1].MaxHp;
-            int attackDamage = new Random().Next((int)Program.Character.Atk - (int)Math.Ceiling(monstersHp / Program.Character.Atk), (int)Program.Character.Atk + (int)Math.Ceiling(monstersHp / Program.Character.Atk));
+            float errorRange = (float)(new Random().Next(0, 11) * 0.02 - 0.1);
+            int attackDamage = (int)(Program.Character.Atk + Program.Character.Atk * errorRange);
             TargetDamage = attackDamage;
             monsters[input - 1].Hp -= attackDamage;
             if (monsters[input - 1].Hp <= 0)

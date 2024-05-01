@@ -12,6 +12,7 @@ namespace OceanStory
         public static IMonster Monster;
         public static BattleManager BattleManager;
         public static RewardManager RewardManager;
+        public static QuestManager QuestManager;
 
         public static string nickName;
         static void Main(string[] args)
@@ -19,6 +20,7 @@ namespace OceanStory
             SceneManager = new SceneManager();
             SystemMessage = new SystemMessage();
             RewardManager = new RewardManager();
+            QuestManager = new QuestManager();
             SceneManager.ChangeScene("LoginScene");
         }
     }

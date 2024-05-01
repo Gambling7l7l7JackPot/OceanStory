@@ -58,7 +58,8 @@ namespace OceanStory.Scenes
                 else
                 {
                     Console.WriteLine("0. 취소");
-                    input = Program.SceneManager.GetUserInput(Program.BattleManager.monsters.Count(), "대상을 선택해주세요.");
+
+                    input = Program.SceneManager.GetUserInput(Program.BattleManager.monsters.Count(), "대상을 선택해주세요.", 1);
                     if (0 <= input && input <= Program.BattleManager.monsters.Count())
                     {
                         if (input == 0)
