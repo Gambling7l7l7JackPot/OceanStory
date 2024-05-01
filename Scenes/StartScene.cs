@@ -27,6 +27,7 @@ namespace OceanStory.Scenes
                         break;
                     case 3:
                         Program.Character.Hp = Program.Character.MaxHp;
+                        Program.Character.CharacterDead = false;
                         break;
                     default:
                         break;
