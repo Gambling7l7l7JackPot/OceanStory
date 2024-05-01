@@ -15,7 +15,8 @@ namespace OceanStory
     {
         public List<IMonster> monsters = new List<IMonster>();
         public int TargetIndex, TargetDamage;
-        public double TargetBeforeHp;
+        public double TargetBeforeHp, PlayerBeforeHp;
+        public int Winner, DeadCount;
 
         public void MakeEnemy()
         {
@@ -51,7 +52,65 @@ namespace OceanStory
             int attackDamage = new Random().Next((int)Program.Character.Atk - (int)Math.Ceiling(monstersHp / Program.Character.Atk), (int)Program.Character.Atk + (int)Math.Ceiling(monstersHp / Program.Character.Atk));
             TargetDamage = attackDamage;
             monsters[input - 1].Hp -= attackDamage;
-            if (monsters[input - 1].Hp <= 0) monsters[input - 1].MonsterDead = true;
+            if (monsters[input - 1].Hp <= 0)
+            {
+                monsters[input - 1].MonsterDead = true;
+            }
+            Program.SceneManager.ChangeScene("AttackScene");
+            Winner = WinnerCheck(input);
+            if (Winner == 1)
+            {
+                Program.SceneManager.ChangeScene("BattleResultScene");
+            }
+        }
+
+        public void EnemyAttack()
+        {
+            for (int i = 0; i < monsters.Count; i++)
+            {
+                if (!monsters[i].MonsterDead && !Program.Character.CharacterDead)
+                {
+                    TargetIndex = i;
+                    PlayerBeforeHp = Program.Character.Hp;
+                    Program.Character.Hp -= (int)monsters[i].Atk;
+                    if (Program.Character.Hp <= 0)
+                    {
+                        Program.Character.CharacterDead = true;
+                    }
+                    Program.SceneManager.ChangeScene("MonsterAttackScene");
+                    Winner = WinnerCheck(i);
+                    if (Winner == 2)
+                    {
+                        Program.SceneManager.ChangeScene("BattleResultScene");
+                        break;
+                    }
+                }
+            }
+        }
+
+        public int WinnerCheck(int input)
+        {
+            DeadCount = 0;
+
+            for (int i = 0;i < monsters.Count;i++)
+            {
+                if (monsters[i].MonsterDead)
+                {
+                    DeadCount++;
+                }
+            }
+
+            if( DeadCount == monsters.Count) 
+            {
+                return 1;
+            }
+
+            if (Program.Character.CharacterDead)
+            {
+                return 2;
+            }
+
+            return 0;
         }
     }
 }

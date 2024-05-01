@@ -30,7 +30,11 @@ namespace OceanStory.Scenes
                     "Dead" : Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Hp);
                 Console.WriteLine("\n0. 다음");
                 int input = Program.SceneManager.GetUserInput(0);
-                if (input == 0) return;
+                if (input == 0)
+                {
+                    Program.BattleManager.EnemyAttack();
+                    break;
+                }
             }
         }
     }

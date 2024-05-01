@@ -10,9 +10,15 @@ namespace OceanStory.Scenes
         public override void RunScene()
         {
             bool select = false;
+            Program.BattleManager = new BattleManager();
             Program.BattleManager.MakeEnemy();
+
             while (true)
             {
+                if (Program.BattleManager.Winner != 0)
+                {
+                    return;
+                }
                 Console.Clear();
                 Console.WriteLine("Battle!!");
                 Console.WriteLine("");
@@ -26,7 +32,7 @@ namespace OceanStory.Scenes
                 Console.WriteLine("");
                 Console.WriteLine("[내정보]");
                 Console.WriteLine($"Lv.{Program.Character.Level} {Program.Character.Name} {(Program.Character.Job)}");
-                Console.WriteLine($"HP 100/{Program.Character.Hp}");
+                Console.WriteLine($"HP {Program.Character.Hp}/100");
                 Console.WriteLine("");
 
                 int input;
@@ -65,7 +71,6 @@ namespace OceanStory.Scenes
                             if (!Program.BattleManager.monsters[input - 1].MonsterDead)
                             {
                                 Program.BattleManager.AttackDamage(input);
-                                Program.SceneManager.ChangeScene("AttackScene");
                             }
                         }
                     }
