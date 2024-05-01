@@ -11,8 +11,8 @@ namespace OceanStory.Scenes
         {
             bool select = false;
             Program.BattleManager = new BattleManager();
-            Program.BattleManager.MakeEnemy();
-
+            int Cave = Program.SceneManager.GetUserInput(5);
+            Program.BattleManager.MakeEnemy(Cave);
             while (true)
             {
                 if (Program.BattleManager.Winner != 0)
@@ -49,7 +49,8 @@ namespace OceanStory.Scenes
                             break;
                         case 2:
                             break;
-                        case 3: return;
+                        case 3: 
+                            return;
                         default:
                             break;
                     }

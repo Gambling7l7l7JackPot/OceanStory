@@ -17,30 +17,83 @@ namespace OceanStory
         public int TargetIndex, TargetDamage;
         public double TargetBeforeHp, PlayerBeforeHp, PlayerStartHp;
         public int Winner, DeadCount;
-
-        public void MakeEnemy()
+        enum EnemyType // 몬스터 모음
+        { 
+            Minion,
+            Voidling,
+            CanonMinion,
+            RedGolem,
+            BlueGolem,
+            Wyvern,
+            Diablo
+        }
+        public void MakeEnemy(int Cave)
         {
             PlayerStartHp = Program.Character.Hp;
             monsters.Clear();
             Random random = new Random();
-            
-            int randomMake = new Random().Next(1, 5);
+            List<EnemyType> enemies = new List<EnemyType>();
+            int randomMake = 0;
+            switch (Cave) // 선택된 던전에 따라 난이도 조정 
+            {
+                case 1:
+                    randomMake = new Random().Next(1, 4);
+                    enemies.Add(EnemyType.Minion);
+                    enemies.Add(EnemyType.Voidling);
+                    break;
+                case 2:
+                    randomMake = new Random().Next(2, 5);
+                    enemies.Add(EnemyType.Voidling);
+                    enemies.Add(EnemyType.CanonMinion);
+                    break;
+                case 3:
+                    randomMake = new Random().Next(1, 5);
+                    enemies.Add(EnemyType.BlueGolem);
+                    enemies.Add(EnemyType.CanonMinion);
+                    enemies.Add(EnemyType.RedGolem);
+                    break;
+                case 4:
+                    randomMake = new Random().Next(1, 3);
+                    enemies.Add(EnemyType.Wyvern);
+                    break;
+                case 5:
+                    randomMake = new Random().Next(1, 2);
+                    enemies.Add(EnemyType.Diablo);
+                    break;
+            }
+
             for (int i = 0; i < randomMake; i++)
             {
-                int makeMonsters = random.Next(1, 4);
-                switch (makeMonsters)
+                int targetIndex = random.Next(enemies.Count);
+                switch (enemies[targetIndex]) // 몬스터 리스트에 랜덤으로 받아온 몬스터들 타켓으로 찾아 추가
                 {
-                    case 1:
+                    case EnemyType.Minion: 
                         Minion minion = new("미니언");
                         monsters.Add(minion);
                         break;
-                    case 2:
+                    case EnemyType.Voidling:
                         Voidling voidling = new("공허충");
                         monsters.Add(voidling);
                         break;
-                    case 3:
+                    case EnemyType.CanonMinion:
                         CanonMinion canonMinion = new("대포미니언");
                         monsters.Add(canonMinion);
+                        break;
+                    case EnemyType.RedGolem:
+                        RedGolem redGolem = new("레드 골렘");
+                        monsters.Add(redGolem);
+                        break;
+                    case EnemyType.BlueGolem:
+                        BlueGolem blueGolem = new("블루 골렘");
+                        monsters.Add(blueGolem);
+                        break;
+                    case EnemyType.Wyvern:
+                        Wyvern wyvern = new("와이번");
+                        monsters.Add(wyvern);
+                        break;
+                    case EnemyType.Diablo:
+                        Diablo diablo = new("魔王 [Boss] 디아블로");
+                        monsters.Add(diablo);
                         break;
                 }
             }

@@ -14,11 +14,11 @@ namespace OceanStory.Scenes
             while(true)
             {
                 Console.Clear();
-                Console.WriteLine("Battle!! - Result");
-                if (Program.BattleManager.Winner == 1)
+                Console.WriteLine("Battle!! - Result"); 
+                if (Program.BattleManager.Winner == 1) // 배틀 승리
                 {
-                    int beforeExp = Program.RewardManager.CharacterExpUp();
-                    int beforeLevel = Program.RewardManager.CharacterLevelUpCheck();
+                    int beforeExp = Program.RewardManager.CharacterExpUp(); // 메서드를 불러오기전에 이전 경험치를 저장
+                    int beforeLevel = Program.RewardManager.CharacterLevelUpCheck(); // 메서드를 불러오기전에 이전 레벨을 저장
                     Console.WriteLine("\nVictory");
                     Console.WriteLine("\n던전에서 몬스터 {0}마리를 잡았습니다.", Program.BattleManager.monsters.Count());
                     Console.WriteLine("\n[캐릭터 정보]");
@@ -30,7 +30,7 @@ namespace OceanStory.Scenes
                 {
                     Console.WriteLine("\nYou Lose");
                     Console.WriteLine("\nLv.{0} {1}", Program.Character.Level, Program.Character.Name);
-                    Console.WriteLine("HP {0} -> {1}", Program.Character.MaxHp, "0");
+                    Console.WriteLine("HP {0} -> {1}", Program.BattleManager.PlayerStartHp, "0");
                 }
                 Console.WriteLine("\n0. 다음");
                 int input = Program.SceneManager.GetUserInput(1);

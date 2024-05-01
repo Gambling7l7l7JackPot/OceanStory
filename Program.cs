@@ -19,6 +19,7 @@ namespace OceanStory
             SceneManager = new SceneManager();
             SystemMessage = new SystemMessage();
             RewardManager = new RewardManager();
+            BattleManager = new BattleManager();
             SceneManager.ChangeScene("LoginScene");
         }
     }
