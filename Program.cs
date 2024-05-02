@@ -15,6 +15,7 @@ namespace OceanStory
         public static BattleManager BattleManager;
         public static RewardManager RewardManager;
         public static SkillManager SkillManager;
+        public static QuestManager QuestManager;
 
         public static Inventory Inventory;
         public static Item Item;
@@ -30,6 +31,7 @@ namespace OceanStory
             SystemMessage = new SystemMessage();
             RewardManager = new RewardManager();
             SkillManager = new SkillManager();
+            QuestManager = new QuestManager();
 
             Inventory = new Inventory();
             

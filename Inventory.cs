@@ -93,6 +93,7 @@ namespace OceanStory
                             }
                         }
                         equipList.Add(selected); // 선택한 아이템을 장착 ( 기존에 착용했던 템중에서 중복된 아이템 타입을 해제후 착용 or 굳이 같은타입 안끼고 있었다 하더라도 착용 )
+                        Program.QuestManager.ProgressQuest(1); // 장비 장착 퀘스트 진행도 증가
                     }
                 }
                 else

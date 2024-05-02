@@ -15,6 +15,7 @@ namespace OceanStory
             Program.Character.Def += 1;
             Program.Character.Level += 1;
             Program.Character.Mp += 5;
+            Program.QuestManager.ProgressQuest(2); // 레벨업 증가 퀘스트 진행도 증가
         }
         public int CharacterExpUp() // 몬스터 경험치를 통한 캐릭터 경험치 추가
         {
