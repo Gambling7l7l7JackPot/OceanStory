@@ -35,5 +35,20 @@ namespace OceanStory
             }
             return beforeLevel;
         }
+
+        public float EquippedAtk()
+        {
+            float atkBonus = Program.Character.Atk;
+
+            foreach (var equippedItem in Program.Inventory.equipList)
+            {
+                if (equippedItem.Atk != null)
+                {
+                    atkBonus += equippedItem.Atk.Value;
+                }
+            }
+
+            return atkBonus;
+        }
     }
 }

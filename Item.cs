@@ -19,8 +19,8 @@ namespace OceanStory
     {
         public string Name { get; }
         public string Description { get; }
-        public int? Atk { get; }
-        public int? Def { get; }
+        public float? Atk { get; set; }
+        public float? Def { get; set; }
         public ItemType Type { get; }
         
 

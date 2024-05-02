@@ -9,8 +9,8 @@ namespace OceanStory
 {
     internal class Inventory
     {
-        List<Item> itemList = new List<Item>();
-        List<Item> equipList = new List<Item>();
+        public List<Item> itemList = new List<Item>();
+        public List<Item> equipList = new List<Item>();
 
         string infoAtk = "  공격력 ";
         string infoDef = "  방어력 ";
