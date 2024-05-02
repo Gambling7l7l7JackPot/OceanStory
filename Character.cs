@@ -14,7 +14,9 @@ namespace OceanStory
         public string Name { get; set; }
         public string Job { get; set; }
         public float Atk { get; set; }
+        public float AtkBonus { get; set; }
         public float Def { get; set; }
+        public float DefBonus { get; set; }
         public int Hp { get; set; }
         public int Gold { get; set; }
         public int MaxHp { get; set; }

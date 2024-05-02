@@ -82,28 +82,57 @@ namespace OceanStory
                     {
                         equipList.Remove(selected); // 장착된 아이템이면 해제
 
-                        float setAtkBonus = (float)selected.Atk;
-                        Program.Character.Atk -= setAtkBonus;
+                        if (selected.Atk != null) // 입력한 아이템에 공격력이 있는 경우에만 처리
+                        {
+                            float setAtkBonus = (float)selected.Atk;
+                            Program.Character.Atk -= setAtkBonus;
+                            Program.Character.AtkBonus -= setAtkBonus;
+                        }
+                        if (selected.Def != null) 
+                        {
+                            float setDefBonus = (float)selected.Def;
+                            Program.Character.Def -= setDefBonus;
+                            Program.Character.DefBonus -= setDefBonus;
+                        }
                     }
                     else // 장착된 아이템을 입력한것이 아니었다면
                     {
-                        foreach (var equippedItem in equipList) // 중복된 타입은 피하기위해서,  장착된 아이템들의 리스트를 나열한 다음
+                        foreach (Item equippedItem in equipList) // 중복된 타입은 피하기위해서,  장착된 아이템들의 리스트를 나열한 다음
                         {
                             if(equippedItem.Type == selected.Type) //  장착한 아이템들 중에서 아이템 타입이 == 입력한 아이템타입과 같은게 있따면
                             {
                                 equipList.Remove(equippedItem); // 기존에 착용한 아이템을 해제해라
+                                if (equippedItem.Atk != null)
+                                {
+                                    float setAtkBonus = (float)equippedItem.Atk;
+                                    Program.Character.Atk -= setAtkBonus;
+                                    Program.Character.AtkBonus -= setAtkBonus;
+                                }
+                                if (equippedItem.Def != null)
+                                {
+                                    float setDefBonus = (float)equippedItem.Def;
+                                    Program.Character.Def -= setDefBonus;
+                                    Program.Character.Def -= setDefBonus;
+                                }
                                 break; // 루프 종료
                             }
                         }
                         equipList.Add(selected); // 선택한 아이템을 장착 ( 기존에 착용했던 템중에서 중복된 아이템 타입을 해제후 착용 or 굳이 같은타입 안끼고 있었다 하더라도 착용 )
-<<<<<<< HEAD
+                        if(selected.Atk != null)
+                        {
+                            float getAtkBonus = (float)selected.Atk;
+                            Program.Character.Atk += getAtkBonus;
+                            Program.Character.AtkBonus += getAtkBonus;
+                        }
+                        if (selected.Def != null)
+                        {
+                            float getDefBonus = (float)selected.Def;
+                            Program.Character.Def += getDefBonus;
+                            Program.Character.DefBonus += getDefBonus;
+                        }
 
-                        if()
-                        float getAtkBonus = (float)selected.Atk;
-                        Program.Character.Atk += getAtkBonus;
-=======
                         Program.QuestManager.ProgressQuest(1); // 장비 장착 퀘스트 진행도 증가
->>>>>>> Dev
+
                     }
                 }
                 else

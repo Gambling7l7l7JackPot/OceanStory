@@ -19,8 +19,7 @@ namespace OceanStory.Scenes
                 int input = Program.SceneManager.GetUserInput(5);
                 switch (input)
                 {
-                    case 0:
-                        return;
+
                     case 1:
                         Program.SceneManager.ChangeScene("StatusScene");
                         break;
