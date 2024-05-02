@@ -44,6 +44,8 @@ namespace OceanStory.Scenes
                     case 3:
                         Program.Character.Hp = Program.Character.MaxHp;
                         Program.Character.CharacterDead = false;
+                        Console.WriteLine("\n체력이 회복됩니다.");
+                        Thread.Sleep(1000);
                         break;
                     default:
                         break;
