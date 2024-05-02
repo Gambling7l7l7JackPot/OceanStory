@@ -20,6 +20,7 @@ namespace OceanStory.Scenes
                 Console.WriteLine($"공격력 : {Program.Character.Atk}");
                 Console.WriteLine($"방어력 : {Program.Character.Def}");
                 Console.WriteLine($"체 력  : {Program.Character.Hp}");
+                Console.WriteLine($"마 나  : {Program.Character.Mp}");
                 Console.WriteLine($"Gold   : {Program.Character.Gold} G");
                 Console.WriteLine($"Exp    : {Program.Character.Exp}");
                 Console.WriteLine("");

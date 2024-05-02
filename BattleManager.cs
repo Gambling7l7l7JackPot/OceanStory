@@ -114,9 +114,9 @@ namespace OceanStory
 
             double monstersHp = monsters[input - 1].MaxHp;
             attackDamage = new Random().Next((int)Program.Character.Atk - (int)Math.Ceiling(Program.Character.Atk / 10), (int)Program.Character.Atk + (int)Math.Ceiling(Program.Character.Atk / 10));
- 
+
             AttackCri(ref attackDamage);
-            monsters[input - 1].Hp -= attackDamage;
+            monsters[input - 1].Hp -= attackDamage ;
 
             if (monsters[input - 1].Hp <= 0)
             {

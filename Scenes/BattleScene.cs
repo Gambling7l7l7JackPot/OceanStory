@@ -36,6 +36,7 @@ namespace OceanStory.Scenes
                 Console.WriteLine("[내정보]");
                 Console.WriteLine($"Lv.{Program.Character.Level} {Program.Character.Name} {(Program.Character.Job)}");
                 Console.WriteLine($"HP {Program.Character.Hp}/{Program.Character.MaxHp}");
+                Console.WriteLine($"MP {Program.Character.Mp}/{Program.Character.MaxMp}");
                 Console.WriteLine("");
 
                 int input;
@@ -44,17 +45,23 @@ namespace OceanStory.Scenes
                     Program.ColorManager.ColorText(1);
                     Console.WriteLine("1. 공격");
                     Program.ColorManager.ColorText(0);
-                    Console.WriteLine("2. 아이템 사용");
-                    Console.WriteLine("3. 도망가기");
-                    input = Program.SceneManager.GetUserInput(3);
+                    Program.ColorManager.ColorText(3);
+                    Console.WriteLine("2. 스킬");
+                    Program.ColorManager.ColorText(0);
+                    Console.WriteLine("3. 아이템 사용");
+                    Console.WriteLine("4. 도망가기");
+                    input = Program.SceneManager.GetUserInput(4);
                     switch (input)
                     {
                         case 1:
                             select = true;
                             break;
                         case 2:
+                            select = true;
                             break;
                         case 3: 
+                            return;
+                        case 4:
                             return;
                         default:
                             break;

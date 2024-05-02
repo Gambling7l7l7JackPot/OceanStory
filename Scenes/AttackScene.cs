@@ -16,9 +16,9 @@ namespace OceanStory.Scenes
             {
                 Console.Clear();
                 Console.WriteLine("Battle!!");
-                Console.WriteLine("\n{0} {1}", 
+                Console.WriteLine("\n{0}의 {1}", 
                     Program.Character.Name,
-                    Program.BattleManager.isCriticle != true ? "의 공격!" : "의 크리티컬 공격!!");
+                    Program.BattleManager.isCriticle != true ? "공격!" : "크리티컬 공격!!");
                 Console.WriteLine("Lv.{0} {1} {2} {3}]",
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Level,
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Name,
