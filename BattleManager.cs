@@ -1,4 +1,4 @@
-﻿using OceanStory.Interfaces;
+using OceanStory.Interfaces;
 using OceanStory.Monsters;
 using System;
 using System.Collections.Generic;
@@ -121,6 +121,7 @@ namespace OceanStory
             if (monsters[input - 1].Hp <= 0)
             {
                 monsters[input - 1].MonsterDead = true;
+                Program.QuestManager.ProgressQuest(0); // 몬스터 처치 퀘스트 진행도 증가
             }
 
             TargetDamage = attackDamage;
