@@ -1,5 +1,6 @@
 ﻿using OceanStory.Interfaces;
 using OceanStory.Scenes;
+using System;
 using System.Threading;
 
 namespace OceanStory
@@ -13,6 +14,7 @@ namespace OceanStory
         public static BattleManager BattleManager;
         public static RewardManager RewardManager;
         public static QuestManager QuestManager;
+        public static ColorManager ColorManager;
 
         public static string nickName;
         static void Main(string[] args)
@@ -21,6 +23,8 @@ namespace OceanStory
             SystemMessage = new SystemMessage();
             RewardManager = new RewardManager();
             QuestManager = new QuestManager();
+            BattleManager = new BattleManager();
+            ColorManager = new ColorManager();
             SceneManager.ChangeScene("LoginScene");
         }
     }

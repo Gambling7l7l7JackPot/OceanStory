@@ -16,9 +16,11 @@ namespace OceanStory.Scenes
                 Console.WriteLine("Battle!!");
                 Console.WriteLine("\nLv.{0} {1} 의 공격!", Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Level,
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Name);
-                Console.WriteLine("{0} 을(를) 맞췄습니다. [데미지 : {1}]",
+                Console.WriteLine("{0} {1} {2}]",
                     Program.Character.Name,
-                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Atk);
+                    Program.BattleManager.isMoving != true ? "을(를) 맞췄습니다. [데미지:" : "이(가) 회피했습니다. [데미지: ",
+                    Program.BattleManager.isMoving == true ? "0" : 
+                    Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Atk - Program.Character.Def);
                 Console.WriteLine("\nLv.{0} {1}",
                     Program.Character.Level,
                     Program.Character.Name);

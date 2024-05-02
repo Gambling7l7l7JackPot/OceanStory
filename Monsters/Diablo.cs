@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OceanStory.Monsters
 {
-    internal class Voidling : IMonster
+    internal class Diablo : IMonster
     {
         public string Name { get; }
         public int Hp { get; set; }
@@ -16,15 +16,15 @@ namespace OceanStory.Monsters
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
         public int Exp { get; set; }
-        public Voidling(string name)
+        public Diablo(string name)
         {
-            Level = new Random().Next(3, 6);
+            Level = new Random().Next(98, 99);
             Name = name;
-            Hp = 7 + Level;
-            Atk = 6 + Level;
-            MaxHp = 7 + Level;
+            Hp = 900 + Level;
+            Atk = 1 + Level;
+            MaxHp = 900 + Level;
             MonsterDead = false;
-            Exp = 3 + Level;
+            Exp = 900 + Level;
         }
     }
 }
