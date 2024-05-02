@@ -36,24 +36,34 @@ namespace OceanStory
             return beforeLevel;
         }
 
-        public float EquippedAtk()
-        {
-            float atkBonus = Program.Character.Atk;
 
-            foreach (var equippedItem in Program.Inventory.equipList)
-            {
-                if (equippedItem.Atk != null)
-                {
-                    atkBonus += equippedItem.Atk.Value;
-                }
-            }
+        //public float EquippedAtkCaseOne() // 1. 아이템을 장착하는경우
+        //{
+        //    float getAtkBonus = Program.Character.Atk;
 
-            return atkBonus;
-        }
-        public void EquippedForResistAtk()
-        {
-            float atkBonus = EquippedAtk(); // 장착된 아이템의 공격력 보너스
-            Program.Character.Atk += atkBonus; // 캐릭터의 공격력에 보너스를 적용
-        }
+        //    foreach (var equippedItem in Program.Inventory.equipList)
+        //    {
+        //        if (equippedItem.Atk != null)
+        //        {
+        //            Program.Character.Atk += equippedItem.Atk.Value;
+        //        }
+        //    }
+
+        //    return getAtkBonus;
+        //}
+
+        //public float EquippedAtkCaseTwo() // 2. 이미 장착했던걸 해제하는경우
+        //{
+        //    float setAtkBonus = Program.RewardManager.EquippedAtkCaseOne(); // 아이템 장착 시 증가된 공격력을 미리 계산하여 저장
+
+        //    Program.Character.Atk -= setAtkBonus; // 저장된 증가된 공격력을 다시 빼줌
+
+        //    return setAtkBonus;
+        //}
+
+        //public void EquippedAtkCaseThree() // 3. 다른 타입을 사용하게 되는경우
+        //{
+
+        //}
     }
 }

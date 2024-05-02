@@ -81,10 +81,13 @@ namespace OceanStory
                     if (equipList.Contains(selected)) //  이미 장착된 아이템을 입력한 것이라면
                     {
                         equipList.Remove(selected); // 장착된 아이템이면 해제
+
+                        float setAtkBonus = (float)selected.Atk;
+                        Program.Character.Atk -= setAtkBonus;
                     }
                     else // 장착된 아이템을 입력한것이 아니었다면
                     {
-                        foreach (Item equippedItem in equipList) // 중복된 타입은 피하기위해서,  장착된 아이템들의 리스트를 나열한 다음
+                        foreach (var equippedItem in equipList) // 중복된 타입은 피하기위해서,  장착된 아이템들의 리스트를 나열한 다음
                         {
                             if(equippedItem.Type == selected.Type) //  장착한 아이템들 중에서 아이템 타입이 == 입력한 아이템타입과 같은게 있따면
                             {
@@ -93,6 +96,10 @@ namespace OceanStory
                             }
                         }
                         equipList.Add(selected); // 선택한 아이템을 장착 ( 기존에 착용했던 템중에서 중복된 아이템 타입을 해제후 착용 or 굳이 같은타입 안끼고 있었다 하더라도 착용 )
+
+                        if()
+                        float getAtkBonus = (float)selected.Atk;
+                        Program.Character.Atk += getAtkBonus;
                     }
                 }
                 else
