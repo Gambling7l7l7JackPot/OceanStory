@@ -33,25 +33,19 @@ namespace OceanStory.Scenes
                         {
                             Console.Clear();
                             Console.WriteLine("들어갈 던전을 선택해주세요. \n별 갯수에 따라 난이도가 변경 됩니다.\n ");
-                            Console.WriteLine("[☆☆☆★★] 1. 스파르타의 신전 \n");
-                            Console.WriteLine("[☆☆★★★] 2. 고뇌의 분수     \n");
-                            Console.WriteLine("[☆★★★★] 3. 마감의 감옥     \n");
-                            Console.WriteLine("[★★★★★] 4. 메니저님의 방   \n");
-
-                            int Cave = Program.SceneManager.GetUserInput(3);
-                            switch (Cave)
-                            {
-                                case 1:
-                                    Program.SceneManager.ChangeScene("BattleScene");
-                                    break;
-                                case 2:
-                                    break;
-                            }
+                            Console.WriteLine("[★☆☆☆☆] 1. 스파르타의 신전 \n");
+                            Console.WriteLine("[★★☆☆☆] 2. 고뇌의 분수     \n");
+                            Console.WriteLine("[★★★☆☆] 3. 마감의 감옥     \n");
+                            Console.WriteLine("[★★★★☆] 4. 천국의 계단     \n");
+                            Console.WriteLine("[★★★★★] 5. 메니저님의 방   \n");
+                            Program.SceneManager.ChangeScene("BattleScene");
                             break;
                         }
                     case 3:
                         Program.Character.Hp = Program.Character.MaxHp;
                         Program.Character.CharacterDead = false;
+                        Console.WriteLine("\n체력이 회복됩니다.");
+                        Thread.Sleep(1000);
                         break;
                     case 4:
                         Program.Inventory.Check();

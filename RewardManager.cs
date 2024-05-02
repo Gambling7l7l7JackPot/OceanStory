@@ -8,14 +8,14 @@ namespace OceanStory
 {
     internal class RewardManager
     {
-        public void CharacterLevelUp()
+        public void CharacterLevelUp() // 캐릭터 레벨업 스텟
         {
             Program.Character.MaxHp += 5;
             Program.Character.Atk += 0.5f;
             Program.Character.Def += 1;
             Program.Character.Level += 1;
         }
-        public int CharacterExpUp()
+        public int CharacterExpUp() //  // 몬스터 경험치를 통한 캐릭터 경험치 추가
         {
             int beforeExp = Program.Character.Exp;
             foreach(var monster in Program.BattleManager.monsters)
@@ -24,7 +24,7 @@ namespace OceanStory
             }
             return beforeExp;
         }
-        public int CharacterLevelUpCheck()
+        public int CharacterLevelUpCheck() // 캐릭터가 레벨업 했는지 확인하는 메서드
         {
             int beforeLevel = Program.Character.Level;
             int[] RequiredExp = { 10, 35, 65, 100 };
