@@ -15,7 +15,7 @@ namespace OceanStory
             Program.Character.Def += 1;
             Program.Character.Level += 1;
         }
-        public int CharacterExpUp() //  // 몬스터 경험치를 통한 캐릭터 경험치 추가
+        public int CharacterExpUp() // 몬스터 경험치를 통한 캐릭터 경험치 추가
         {
             int beforeExp = Program.Character.Exp;
             foreach(var monster in Program.BattleManager.monsters)
@@ -49,6 +49,11 @@ namespace OceanStory
             }
 
             return atkBonus;
+        }
+        public void EquippedForResistAtk()
+        {
+            float atkBonus = EquippedAtk(); // 장착된 아이템의 공격력 보너스
+            Program.Character.Atk += atkBonus; // 캐릭터의 공격력에 보너스를 적용
         }
     }
 }
