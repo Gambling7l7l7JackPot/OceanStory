@@ -1,13 +1,6 @@
-﻿using OceanStory.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory.Scenes
+﻿namespace OceanStory.Scenes
 {
+    // 플레이어 공격 화면
     internal class AttackScene : Scene
     {
         public override void RunScene()
@@ -35,6 +28,7 @@ namespace OceanStory.Scenes
                     "Dead" : Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Hp);
                 Console.WriteLine("\n0. 다음");
                 int input = Program.SceneManager.GetUserInput(0);
+                // 이어서 몬스터 공격 차례
                 if (input == 0)
                 {
                     Program.BattleManager.EnemyAttack();

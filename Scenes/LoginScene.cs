@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OceanStory.Characters;
 
 namespace OceanStory.Scenes
 {
+    // 로그인 + 이름/직업 선택 화면
     internal class LoginScene : Scene
     {
         public override void RunScene()
@@ -25,6 +22,27 @@ namespace OceanStory.Scenes
 
                 if (inputID == "Ocean" && inputPassword == "Story")
                 {
+                    Console.Clear();
+                    Console.WriteLine("1. 새로 시작하기\n2. 이전 게임 불러오기");
+                    switch(Program.SceneManager.GetUserInput(2))
+                    {
+                        case 2:
+                            Console.Clear();
+                            Console.WriteLine("불러오실 파일 이름을 적어주세요");
+                            bool loadSucceed = Program.SaveManager.Load(Console.ReadLine());
+                            if (loadSucceed)
+                            {
+                                Program.SceneManager.ChangeScene("StartScene");
+                            }
+                            else
+                            {
+                                Console.WriteLine("불러오기에 실패했습니다.");
+                                Thread.Sleep(1000);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                     Console.Clear();
 
                     Console.WriteLine("사용할 닉네임을 입력하세요 \n");

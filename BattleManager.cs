@@ -1,30 +1,21 @@
 using OceanStory.Interfaces;
 using OceanStory.Monsters;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OceanStory
 {
+    // 전투 관련 매니저
     internal class BattleManager
     {
-        public List<IMonster> monsters = new List<IMonster>();
+        public List<IMonster> monsters = new List<IMonster>();                       // 몬스터 리스트   
         public int TargetIndex, TargetDamage, SoloTarget;
-        public int[] TargetBothIndexLevel, TargetBothIndexHp, BothTargetBeforeHp;
+        public int[] TargetBothIndexLevel, TargetBothIndexHp, BothTargetBeforeHp;    // 공격 목표 몬스터와 입힌 데미지 저장  // 공격 전 체력 저장
         public string[] TargetBothIndexName;
         public double TargetBeforeHp, PlayerBeforeHp, PlayerStartHp, PlayerBeforeMp, PlayerStartMp;
-        public int Winner, DeadCount;
-        public int attackDamage;
-        public bool isMoving = false;
-        public bool isCriticle = false;
-        public string skillName;
+        public string skillName;                                
+        public int Winner, DeadCount;                                                // 승리자, 전투에서 쓰러트린 몬스터 수                      
+        public int attackDamage;                                                     // 플레이어가 입히는 데미지                                     
+        public bool isMoving = false;                                                // 회피
+        public bool isCriticle = false;                                              // 크리티컬
         enum EnemyType // 몬스터 모음
         {
             Minion,
@@ -35,6 +26,8 @@ namespace OceanStory
             Wyvern,
             Diablo
         }
+
+        // 최초 몬스터 생성
         public void MakeEnemy(int Cave)
         {
             PlayerStartHp = Program.Character.Hp;
@@ -108,17 +101,26 @@ namespace OceanStory
                 InitTargetMoster();
             }
         }
-        public void AttackDamage(int input) // 플레이어 데미지 계산 
+
+        // 플레이어 데미지 계산 
+        public void AttackDamage(int input) 
         {
             TargetIndex = input - 1;
             TargetBeforeHp = monsters[input - 1].Hp;
+            // 회피 체크
+            Moving();
+            if (isMoving)
+            {
+                Program.SceneManager.ChangeScene("AttackScene");
+                return;
+            }
+            // 데미지 계산
             attackDamage = new Random().Next((int)Program.Character.Atk - (int)Math.Ceiling(Program.Character.Atk / 10), (int)Program.Character.Atk + (int)Math.Ceiling(Program.Character.Atk / 10));
-
             AttackCri(ref attackDamage);
             TargetDamage = attackDamage;
-            Moving();
-
-            if (monsters[input-1].Hp <= 0)
+            monsters[input - 1].Hp -= attackDamage;
+            // 몬스터 처치
+            if (monsters[input - 1].Hp <= 0)
             {
                 monsters[input - 1].MonsterDead = true;
                 Program.QuestManager.ProgressQuest(0); // 몬스터 처치 퀘스트 진행도 증가
@@ -137,7 +139,7 @@ namespace OceanStory
             QuestCheack(input); // 퀘스트 체크
 
             Program.SceneManager.ChangeScene("AttackScene");
-
+            // 승부가 정해질 시 전투결과 화면
             Winner = WinnerCheck(input);
             if (Winner == 1)
             {
@@ -145,7 +147,8 @@ namespace OceanStory
             }
         }
 
-        public void EnemyAttack() // 몬스터 데미지 계산
+        // 몬스터 데미지 계산
+        public void EnemyAttack() 
         {
             for (int i = 0; i < monsters.Count; i++)
             {
@@ -153,6 +156,7 @@ namespace OceanStory
                 {
                     TargetIndex = i;
                     PlayerBeforeHp = Program.Character.Hp;
+                    // 회피 체크
                     Moving();
                     if (isMoving)
                     {
@@ -160,11 +164,13 @@ namespace OceanStory
                         continue;
                     }
                     Program.Character.Hp -= ((int)monsters[i].Atk - (int)Program.Character.Def); // 몬스터의 데미지 캐릭터의 방어력 만큼 반감
+                    // 플레이어 사망
                     if (Program.Character.Hp <= 0)
                     {
                         Program.Character.CharacterDead = true;
                     }
                     Program.SceneManager.ChangeScene("MonsterAttackScene");
+                    // 승부가 정해질 시 전투결과 화면
                     Winner = WinnerCheck(i);
                     if (Winner == 2)
                     {
@@ -175,7 +181,8 @@ namespace OceanStory
             }
         }
 
-        public int WinnerCheck(int input) // 캐릭터와 몬스터 승자 체크
+        // 캐릭터와 몬스터 승자 체크
+        public int WinnerCheck(int input)
         {
             DeadCount = 0;
 
@@ -199,7 +206,9 @@ namespace OceanStory
 
             return 0;
         }
-        public void AttackCri(ref int damage) // 크리티컬 데미지 캐릭터만 적용
+
+        // 크리티컬 데미지(캐릭터만 적용)
+        public void AttackCri(ref int damage) 
         {
             int critical = new Random().Next(1, 100);
             if (critical <= 15)
@@ -213,7 +222,9 @@ namespace OceanStory
                 isCriticle = false;
             }
         }
-        public void Moving() // 회피 확률 캐릭터 몬스터 모두 적용
+
+        // 회피 확률(캐릭터 몬스터 모두 적용)
+        public void Moving()
         {
             int moving = new Random().Next(1, 100); 
             if (moving <= 10)

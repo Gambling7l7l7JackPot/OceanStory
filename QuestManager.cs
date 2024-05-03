@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OceanStory.Objects;
+using System.Text.Json.Serialization;
 
 namespace OceanStory
 {
+    // 퀘스트 관련 매니저
     internal class QuestManager
     {
+        [JsonInclude]
         public int QuestIndex = 0;                                      // 외부에서 퀘스트 리스트 접근을 위한 인덱스
+        [JsonInclude]
         public List<Quest> QuestList = new List<Quest>();               // 퀘스트 리스트
+        [JsonInclude]
         public List<Item>[] QuestRewardItemList = new List<Item>[3];    // 퀘스트 보상 아이템 리스트
 
         public QuestManager()

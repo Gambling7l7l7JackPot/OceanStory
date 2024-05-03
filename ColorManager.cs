@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory
+﻿namespace OceanStory
 {
+    // 콘솔 글씨 색 출력 매니저
     internal class ColorManager
     {
         public void ColorText(int num)

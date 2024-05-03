@@ -1,23 +1,20 @@
-﻿using OceanStory.Interfaces;
-using OceanStory.Monsters;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
-
-namespace OceanStory.Scenes
+﻿namespace OceanStory.Scenes
 {
+    // 전투 시작 화면
     internal class BattleScene : Scene
     {
         public override void RunScene()
         {
-            bool select = false;
+            bool select = false; // 공격 대상을 선택해야 하는 상황이면 true
             bool useSkill = false;
             bool noMp = false;
             Program.BattleManager = new BattleManager();
             int Cave = Program.SceneManager.GetUserInput(5);
-            Program.BattleManager.MakeEnemy(Cave);
+            Program.BattleManager.MakeEnemy(Cave);  // 입력에 맞는 던전 생성
+            
             while (true)
             {
-                Program.SkillManager.getMonster.Clear();
+                Program.SkillManager.getMonster.Clear();  // 전투 결과가 정해졌으면 반복문 종료
                 if (Program.BattleManager.Winner != 0)
                 {
                     return;
@@ -43,6 +40,7 @@ namespace OceanStory.Scenes
                 Console.WriteLine("");
 
                 int input;
+                // 공격대상 선택 모드가 아닐 때
                 if (!select)
                 {
                     Program.ColorManager.ColorText(1);
@@ -69,6 +67,7 @@ namespace OceanStory.Scenes
                             return;
                     }
                 }
+                // 공격대상을 선택해야 할 때
                 else
                 {
                     if (useSkill)

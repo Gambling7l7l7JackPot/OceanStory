@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory.Scenes
+﻿namespace OceanStory.Scenes
 {
+    // 시작 화면
     internal class StartScene : Scene
     {
 
@@ -19,13 +14,13 @@ namespace OceanStory.Scenes
                 int input = Program.SceneManager.GetUserInput(5);
                 switch (input)
                 {
-                    case 0:
-                        return;
+                    // 상태 보기
                     case 1:
                         Program.SceneManager.ChangeScene("StatusScene");
                         break;
+                    // 전투 시작
                     case 2:
-                        if (Program.Character.Hp <= 0)
+                        if (Program.Character.Hp <= 0)  // 체력이 없을 경우 전투 불가
                         {
                             Console.WriteLine("\n체력이 없습니다! 체력을 회복해주세요. ");
                             Thread.Sleep(2000);
@@ -43,6 +38,7 @@ namespace OceanStory.Scenes
                             Program.SceneManager.ChangeScene("BattleScene");
                             break;
                         }
+                    // 체력 회복
                     case 3:
                         Program.Character.Hp = Program.Character.MaxHp;
                         Program.Character.Mp = Program.Character.MaxMp;
@@ -50,11 +46,17 @@ namespace OceanStory.Scenes
                         Console.WriteLine("\n체력과 마나가 회복됩니다.");
                         Thread.Sleep(1000);
                         break;
+                    // 인벤토리
                     case 4:
                         Program.Inventory.Check();
                         break;
+                    // 퀘스트
                     case 5:
                         Program.SceneManager.ChangeScene("QuestScene");
+                        break;
+                    // 저장하기
+                    case 6:
+                        Program.SaveManager.Save(Program.nickName);
                         break;
                     default:
                         break;
