@@ -16,8 +16,8 @@ namespace OceanStory
         public static Inventory Inventory;
         public static Item Item;
         public static ColorManager ColorManager;
+        public static SaveManager SaveManager;
         public static string nickName;
-        List<Item> inventory = new List<Item>();
 
         static void Main(string[] args)
         {
@@ -28,6 +28,7 @@ namespace OceanStory
             Inventory = new Inventory();
             BattleManager = new BattleManager();
             ColorManager = new ColorManager();
+            SaveManager = new SaveManager();
             // 초기화가 끝나면 로그인 화면 시작
             SceneManager.ChangeScene("LoginScene");
         }

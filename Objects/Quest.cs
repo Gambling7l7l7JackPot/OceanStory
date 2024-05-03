@@ -12,12 +12,12 @@
         public bool IsAccepted { get; set; }               // 퀘스트 진행 중 여부
         public bool IsCleared { get; set; }                 // 퀘스트 완료 여부
 
-        public Quest(string questName, string description, string questObjective, int questObejctiveCount, int questProgressCount, List<Item> questRewardItem, int questRewardGold)
+        public Quest(string questName, string description, string questObjective, int questObjectiveCount, int questProgressCount, List<Item> questRewardItem, int questRewardGold)
         {
             QuestName = questName;
             Description = description;
             QuestObjective = questObjective;
-            QuestObjectiveCount = questObejctiveCount;
+            QuestObjectiveCount = questObjectiveCount;
             QuestProgressCount = questProgressCount;
             QuestRewardItem = questRewardItem;
             QuestRewardGold = questRewardGold;

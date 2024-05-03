@@ -10,9 +10,9 @@
             {
                 Console.Clear();
                 Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.");
-                Console.WriteLine("\n1. 상태 보기\n2. 전투 시작\n3. 체력 회복\n4. 인벤토리\n5. 퀘스트\n\n0. 게임 종료");
+                Console.WriteLine("\n1. 상태 보기\n2. 전투 시작\n3. 체력 회복\n4. 인벤토리\n5. 퀘스트\n6. 저장하기\n\n0. 게임 종료");
 
-                int input = Program.SceneManager.GetUserInput(5);
+                int input = Program.SceneManager.GetUserInput(6);
                 switch (input)
                 {
                     // 상태 보기
@@ -53,6 +53,10 @@
                     // 퀘스트
                     case 5:
                         Program.SceneManager.ChangeScene("QuestScene");
+                        break;
+                    // 저장하기
+                    case 6:
+                        Program.SaveManager.Save(Program.nickName);
                         break;
                     default:
                         break;

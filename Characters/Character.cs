@@ -1,6 +1,6 @@
 ﻿namespace OceanStory.Characters
 {
-    internal abstract class Character
+    internal class Character
     {
         public int Level { get; set; }          // 플레이어 레벨
         public string Name { get; set; }        // 플레이어 이름
@@ -14,13 +14,16 @@
         public int MaxHp { get; set; }          // 최대 체력
         public int Exp { get; set; }            // 경험치
         public bool CharacterDead { get; set; } // 플레이어 사망 여부
+
         public Character(int level, string name, string job, float atk, float def, int hp, int maxHp, int gold, int exp)
         {
             Level = level;
             Name = name;
             Job = job;
             Atk = atk;
+            AtkBonus = 0;
             Def = def;
+            DefBonus = 0;
             Hp = hp;
             Gold = gold;
             MaxHp = maxHp;
