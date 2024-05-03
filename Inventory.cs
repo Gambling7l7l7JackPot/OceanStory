@@ -109,7 +109,7 @@ namespace OceanStory
                                 {
                                     float setDefBonus = (float)equippedItem.Def;
                                     Program.Character.Def -= setDefBonus;
-                                    Program.Character.Def -= setDefBonus;
+                                    Program.Character.DefBonus -= setDefBonus;
                                 }
                                 break; // 루프 종료
                             }
