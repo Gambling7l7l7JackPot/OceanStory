@@ -21,7 +21,7 @@ namespace OceanStory
             int currentCursor = Console.GetCursorPosition().Top;
             Console.SetCursorPosition(0, currentCursor + 4);
             Console.Write(message);
-            Console.SetCursorPosition(0, currentCursor);
+           Console.SetCursorPosition(0, currentCursor);
             message = "";
         }
     }

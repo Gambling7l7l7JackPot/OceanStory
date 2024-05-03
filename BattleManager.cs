@@ -2,24 +2,29 @@ using OceanStory.Interfaces;
 using OceanStory.Monsters;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OceanStory
 {
     internal class BattleManager
     {
         public List<IMonster> monsters = new List<IMonster>();
-        public int TargetIndex, TargetDamage;
-        public double TargetBeforeHp, PlayerBeforeHp, PlayerStartHp;
+        public int TargetIndex, TargetDamage, SoloTarget;
+        public int[] TargetBothIndexLevel, TargetBothIndexHp, BothTargetBeforeHp;
+        public string[] TargetBothIndexName;
+        public double TargetBeforeHp, PlayerBeforeHp, PlayerStartHp, PlayerBeforeMp, PlayerStartMp;
         public int Winner, DeadCount;
         public int attackDamage;
         public bool isMoving = false;
         public bool isCriticle = false;
+        public string skillName;
         enum EnemyType // 몬스터 모음
         {
             Minion,
@@ -33,6 +38,7 @@ namespace OceanStory
         public void MakeEnemy(int Cave)
         {
             PlayerStartHp = Program.Character.Hp;
+            PlayerStartMp = Program.Character.Mp;
             monsters.Clear();
             Random random = new Random();
             List<EnemyType> enemies = new List<EnemyType>();
@@ -99,33 +105,39 @@ namespace OceanStory
                         monsters.Add(diablo);
                         break;
                 }
+                InitTargetMoster();
             }
         }
         public void AttackDamage(int input) // 플레이어 데미지 계산 
         {
             TargetIndex = input - 1;
             TargetBeforeHp = monsters[input - 1].Hp;
-            Moving();
-            if (isMoving)
-            {
-                Program.SceneManager.ChangeScene("AttackScene");
-                return;
-            }
-
-            double monstersHp = monsters[input - 1].MaxHp;
             attackDamage = new Random().Next((int)Program.Character.Atk - (int)Math.Ceiling(Program.Character.Atk / 10), (int)Program.Character.Atk + (int)Math.Ceiling(Program.Character.Atk / 10));
 
             AttackCri(ref attackDamage);
-            monsters[input - 1].Hp -= attackDamage ;
+            TargetDamage = attackDamage;
+            Moving();
 
-            if (monsters[input - 1].Hp <= 0)
+            if (monsters[input-1].Hp <= 0)
             {
                 monsters[input - 1].MonsterDead = true;
                 Program.QuestManager.ProgressQuest(0); // 몬스터 처치 퀘스트 진행도 증가
             }
 
-            TargetDamage = attackDamage;
+            if (isMoving)
+            {
+                Program.SceneManager.ChangeScene("AttackScene");
+                return;
+            }
+            else
+            {
+                monsters[input - 1].Hp -= attackDamage;
+            }
+
+            QuestCheack(input); // 퀘스트 체크
+
             Program.SceneManager.ChangeScene("AttackScene");
+
             Winner = WinnerCheck(input);
             if (Winner == 1)
             {
@@ -189,7 +201,7 @@ namespace OceanStory
         }
         public void AttackCri(ref int damage) // 크리티컬 데미지 캐릭터만 적용
         {
-            int critical = new Random().Next(1, 30);
+            int critical = new Random().Next(1, 100);
             if (critical <= 15)
             {
                 isCriticle = true;
@@ -203,7 +215,7 @@ namespace OceanStory
         }
         public void Moving() // 회피 확률 캐릭터 몬스터 모두 적용
         {
-            int moving = new Random().Next(1, 30); 
+            int moving = new Random().Next(1, 100); 
             if (moving <= 10)
             {
                 isMoving = true;
@@ -213,5 +225,116 @@ namespace OceanStory
                 isMoving = false;
             }
         }
+        public void SkillDamage(int skill) // 플레이어 스킬 데미지 계산 
+        {
+            int input = 0;
+            if (Program.Character.Job == "전사")
+            {
+                switch (skill)
+                {
+                    case 1:
+                        SoloTarget = 1;
+                        while (true)
+                        {
+                            input = Program.SkillManager.GetSkillUse(Program.BattleManager.monsters.Count(), "대상을 선택해주세요.", 1);
+                            if (input == -1)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        TargetIndex = input - 1;
+                        TargetBeforeHp = monsters[input - 1].Hp;
+                        attackDamage = (Program.Character.Level * 2) + 20;
+                        skillName = "Decisive Strike";
+                        Program.Character.Mp -= 5;
+                        TargetDamage = attackDamage;
+                        monsters[input - 1].Hp -= attackDamage;
+                        QuestCheack(input);
+                        break;
+                    case 2:
+                        Program.Character.Hp += 15;
+                        skillName = "Courage";
+                        Program.Character.Mp -= 5;
+                        if (Program.Character.Hp >= Program.Character.MaxHp)
+                        {
+                            Program.Character.Hp = Program.Character.MaxHp;
+                        }
+                        TargetIndex = 100;
+                        break;
+                    case 3:
+                        SoloTarget = 0;
+                        attackDamage = (Program.Character.Level * 2) + 10;
+                        skillName = "Judgement";
+                        Program.Character.Mp -= 10;
+                        TargetDamage = attackDamage;
+                        for (int i = 0; i < monsters.Count; i++)
+                        {
+                            TargetBothIndexLevel[i] = monsters[i].Level;
+                            TargetBothIndexName[i] = monsters[i].Name;
+                            TargetBothIndexHp[i] = monsters[i].Hp;
+                            BothTargetBeforeHp[i] = monsters[i].Hp;
+                            monsters[i].Hp -= attackDamage;
+                            if (monsters[i].Hp <= 0)
+                            {
+                                monsters[i].MonsterDead = true;
+                                Program.QuestManager.ProgressQuest(0); // 몬스터 처치 퀘스트 진행도 증가
+                            }
+                        }
+                        break;
+                    case 4:
+                        while (true)
+                        {
+                            input = Program.SkillManager.GetSkillUse(Program.BattleManager.monsters.Count(), "대상을 선택해주세요.", 1);
+                            if (input == -1)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        TargetIndex = input - 1;
+                        SoloTarget = 1;
+                        TargetBeforeHp = monsters[input - 1].Hp;
+                        attackDamage = (Program.Character.Level*2) + 50;
+                        skillName = "Demacian Justice";
+                        Program.Character.Mp -= 30;
+                        TargetDamage = attackDamage;
+                        monsters[input - 1].Hp -= attackDamage;
+                        QuestCheack(input);
+                        break;
+
+                }
+            }
+
+            Program.SceneManager.ChangeScene("SkillScene");
+
+            Winner = WinnerCheck(input);
+            if (Winner == 1)
+            {
+                Program.SceneManager.ChangeScene("BattleResultScene");
+            }
+        }
+        public void QuestCheack(int input)
+        {
+            if (monsters[input-1].Hp <= 0)
+            {
+                monsters[input - 1].MonsterDead = true;
+                Program.QuestManager.ProgressQuest(0); // 몬스터 처치 퀘스트 진행도 증가
+            }
+        }
+        public void InitTargetMoster()
+        {
+            TargetBothIndexHp = new int[monsters.Count];
+            TargetBothIndexLevel = new int[monsters.Count];
+            TargetBothIndexName = new string[monsters.Count];
+            BothTargetBeforeHp = new int[monsters.Count];
+        }
+
     }
 }

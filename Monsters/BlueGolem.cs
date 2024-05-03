@@ -16,15 +16,17 @@ namespace OceanStory.Monsters
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
         public int Exp { get; set; }
+        public int Gold { get; set; }
         public BlueGolem(string name)
         {
-            Level = new Random().Next(9, 13);
+            Level = new Random().Next(25, 35);
             Name = name;
-            Hp = 30 + Level;
+            Hp = 50 + Level;
             Atk = 10 + Level;
-            MaxHp = 30 + Level;
+            MaxHp = 50 + Level;
             MonsterDead = false;
-            Exp = 20 + Level;
+            Exp = Level;
+            Gold = Level * 5;
         }
     }
 }

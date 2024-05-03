@@ -14,7 +14,7 @@ namespace OceanStory
             Program.Character.Atk += 0.5f;
             Program.Character.Def += 1;
             Program.Character.Level += 1;
-            Program.Character.Mp += 5;
+            Program.Character.MaxMp += 5;
             Program.QuestManager.ProgressQuest(2); // 레벨업 증가 퀘스트 진행도 증가
         }
         public int CharacterExpUp() // 몬스터 경험치를 통한 캐릭터 경험치 추가
@@ -25,6 +25,15 @@ namespace OceanStory
                 Program.Character.Exp += monster.Exp;
             }
             return beforeExp;
+        }
+        public int CharacterGoldUp() // 몬스터 경험치를 통한 캐릭터 경험치 추가
+        {
+            int beforeGold = Program.Character.Gold;
+            foreach (var monster in Program.BattleManager.monsters)
+            {
+                Program.Character.Gold += monster.Gold;
+            }
+            return beforeGold;
         }
         public int CharacterLevelUpCheck() // 캐릭터가 레벨업 했는지 확인하는 메서드
         {

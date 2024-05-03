@@ -10,11 +10,13 @@ namespace OceanStory
     {
         public string Name { get; }
         public string Option { get; }
+        public int SkillMp { get; set; }
 
-        public Skill(string name, string option)
+        public Skill(string name, int skillMp, string option)
         {
-            this.Name = name;
-            this.Option = option;
+            Name = name;
+            Option = option;
+            SkillMp = skillMp;
         }
     }
 }

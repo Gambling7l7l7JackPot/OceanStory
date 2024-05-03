@@ -15,7 +15,7 @@ namespace OceanStory.Scenes
             {
                 Console.Clear();
                 Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.");
-                Console.WriteLine("\n1. 상태 보기\n2. 전투 시작\n3. 체력 회복\n4. 인벤토리\n5. 퀘스트\n\n0. 게임 종료");
+                Console.WriteLine("\n1. 상태 보기\n2. 전투 시작\n3. 회복\n4. 인벤토리\n5. 퀘스트\n\n0. 게임 종료");
                 int input = Program.SceneManager.GetUserInput(5);
                 switch (input)
                 {
@@ -45,8 +45,9 @@ namespace OceanStory.Scenes
                         }
                     case 3:
                         Program.Character.Hp = Program.Character.MaxHp;
+                        Program.Character.Mp = Program.Character.MaxMp;
                         Program.Character.CharacterDead = false;
-                        Console.WriteLine("\n체력이 회복됩니다.");
+                        Console.WriteLine("\n체력과 마나가 회복됩니다.");
                         Thread.Sleep(1000);
                         break;
                     case 4:

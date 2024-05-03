@@ -19,14 +19,16 @@ namespace OceanStory.Scenes
                 Console.WriteLine("\n{0}의 {1}", 
                     Program.Character.Name,
                     Program.BattleManager.isCriticle != true ? "공격!" : "크리티컬 공격!!");
+                Program.ColorManager.CheckName(Program.BattleManager.TargetIndex);
                 Console.WriteLine("Lv.{0} {1} {2} {3}]",
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Level,
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Name,
                     Program.BattleManager.isMoving != true ? "을(를) 맞췄습니다. [데미지 :" : "이(가) 회피했습니다. [데미지 :",
-                    Program.BattleManager.TargetDamage);
+                    Program.BattleManager.isMoving != true ? Program.BattleManager.TargetDamage : "0");
                 Console.WriteLine("\nLv.{0} {1}",
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Level,
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Name);
+                Program.ColorManager.ColorText(0);
                 Console.WriteLine("HP {0} -> {1}",
                     Program.BattleManager.TargetBeforeHp,
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].MonsterDead ?

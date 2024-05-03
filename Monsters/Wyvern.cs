@@ -16,15 +16,17 @@ namespace OceanStory.Monsters
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
         public int Exp { get; set; }
+        public int Gold { get; set; }
         public Wyvern(string name)
         {
-            Level = new Random().Next(20,24);
+            Level = new Random().Next(36,45);
             Name = name;
-            Hp = 60 + Level;
-            Atk = 3 + Level;
-            MaxHp = 60 + Level;
+            Hp = 100 + Level;
+            Atk = 20 + Level;
+            MaxHp = 100 + Level;
             MonsterDead = false;
-            Exp = 20 + Level;
+            Exp = 30 + Level;
+            Gold = Level * 5;
         }
     }
 }

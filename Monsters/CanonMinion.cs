@@ -16,15 +16,17 @@ namespace OceanStory.Monsters
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
         public int Exp { get; set; }
+        public int Gold { get; set; }
         public CanonMinion(string name)
         {
-            Level = new Random().Next(5, 8);
+            Level = new Random().Next(12, 17);
             Name = name;
-            Hp = 19 + Level;
+            Hp = 30 + Level;
             Atk = 3 + Level;
-            MaxHp = 19 + Level;
+            MaxHp = 30 + Level;
             MonsterDead = false;
-            Exp = 4 + Level;
+            Exp = Level;
+            Gold = Level * 5;
         }
     }
 }

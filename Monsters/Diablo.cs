@@ -16,6 +16,7 @@ namespace OceanStory.Monsters
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
         public int Exp { get; set; }
+        public int Gold { get; set; }
         public Diablo(string name)
         {
             Level = new Random().Next(98, 99);
@@ -25,6 +26,7 @@ namespace OceanStory.Monsters
             MaxHp = 900 + Level;
             MonsterDead = false;
             Exp = 900 + Level;
+            Gold = 9999 + Level;
         }
     }
 }

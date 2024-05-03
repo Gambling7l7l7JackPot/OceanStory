@@ -21,7 +21,7 @@ namespace OceanStory
         public int Exp { get; set; } = 0;
         public int Mp { get; set; }
         public int MaxMp { get; set; } 
-        public bool CharacterDead { get; set; } // 참, 거짓 값으로 Hp가 0보다 작거나 같을때
+        public bool CharacterDead { get; set; }
         public Character(string name, string job, float atk, float def, int hp, int maxHp, int mp, int maxMp )
         {
             Name = name;

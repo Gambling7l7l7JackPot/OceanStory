@@ -39,9 +39,11 @@ namespace OceanStory.Scenes
                     {
                         case 1:
                             character = new Warrior(Program.nickName, "전사", 10, 5, 100, 100, 50, 50);
+                            Program.SkillManager.WarriorSkill();
                             break;
                         case 2:
                             character = new Wizard(Program.nickName, "마법사", 12, 3, 80, 80, 75, 75);
+                            Program.SkillManager.WizardSkill();
                             break;
                         default:
                             Console.WriteLine("잘못된 선택입니다. 처음부터 다시 진행하세요.");

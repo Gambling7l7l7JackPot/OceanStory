@@ -16,15 +16,17 @@ namespace OceanStory.Monsters
         public double MaxHp { get; set; }
         public bool MonsterDead { get; set; }
         public int Exp { get; set; }
+        public int Gold { get; set; }
         public Voidling(string name)
         {
-            Level = new Random().Next(3, 6);
+            Level = new Random().Next(7, 11);
             Name = name;
-            Hp = 7 + Level;
-            Atk = 6 + Level;
-            MaxHp = 7 + Level;
+            Hp = 15 + Level;
+            Atk = 10 + Level;
+            MaxHp = 15 + Level;
             MonsterDead = false;
-            Exp = 3 + Level;
+            Exp = Level;
+            Gold = Level * 5;
         }
     }
 }
