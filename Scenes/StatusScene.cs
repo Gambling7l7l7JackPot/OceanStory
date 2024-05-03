@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory.Scenes
+﻿namespace OceanStory.Scenes
 {
+    // 상태 보기 화면
     internal class StatusScene : Scene
     {
         public override void RunScene()
@@ -25,12 +20,10 @@ namespace OceanStory.Scenes
                 Console.WriteLine("");
                 Console.WriteLine("0. 나가기");
 
-                switch (Program.SceneManager.GetUserInput(1))
+                switch (Program.SceneManager.GetUserInput(0))
                 {
                     case 0:
                         return;
-                    case 1:
-                        break;
                     default:
                         break;
                 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory
+﻿namespace OceanStory
 {
+    // 콘솔에서 현재 커서 아래에 메시지 출력
     internal class SystemMessage
     {
         public string message = "";

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OceanStory.Characters;
 
 namespace OceanStory.Scenes
 {
+    // 로그인 + 이름/직업 선택 화면
     internal class LoginScene : Scene
     {
         public override void RunScene()

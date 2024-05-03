@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory
+﻿namespace OceanStory
 {
+    // 유저 입력 받고 화면 전환하는 매니저
     internal class SceneManager
     {
         public SceneManager() { }
 
+        // 화면 전환
         public void ChangeScene(string sceneName)
         {
             Type sceneType = Type.GetType("OceanStory.Scenes." + sceneName);
             object obj = Activator.CreateInstance(sceneType);
         }
+
+        // 유저 입력 받기(maxNum = 입력 가능한 최대 숫자)
         public int GetUserInput(int maxNum)
         {
             Program.SystemMessage.PrintMessage();
@@ -32,6 +30,8 @@ namespace OceanStory
                 return -1;
             }
         }
+
+        // 유저 입력 받기(maxNum = 입력 가능한 최대 숫자, message = 출력 문구, error = 에러 시 출력 문구)
         public int GetUserInput(int maxNum, string message, int error)
         {
             Program.SystemMessage.PrintMessage();

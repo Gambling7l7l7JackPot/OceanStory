@@ -1,12 +1,6 @@
-﻿using OceanStory.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory.Scenes
+﻿namespace OceanStory.Scenes
 {
+    // 전투 결과 화면
     internal class BattleResultScene : Scene
     {
         public override void RunScene()
@@ -14,8 +8,9 @@ namespace OceanStory.Scenes
             while(true)
             {
                 Console.Clear();
-                Console.WriteLine("Battle!! - Result"); 
-                if (Program.BattleManager.Winner == 1) // 배틀 승리
+                Console.WriteLine("Battle!! - Result");
+                // 전투 승리
+                if (Program.BattleManager.Winner == 1) 
                 {
                     int beforeExp = Program.RewardManager.CharacterExpUp(); // 메서드를 불러오기전에 이전 경험치를 저장
                     int beforeLevel = Program.RewardManager.CharacterLevelUpCheck(); // 메서드를 불러오기전에 이전 레벨을 저장
@@ -26,6 +21,7 @@ namespace OceanStory.Scenes
                     Console.WriteLine("HP {0} -> {1}", Program.BattleManager.PlayerStartHp, Program.Character.Hp);
                     Console.WriteLine("Exp {0} -> {1}", beforeExp, Program.Character.Exp);
                 }
+                // 전투 패배
                 else
                 {
                     Console.WriteLine("\nYou Lose");

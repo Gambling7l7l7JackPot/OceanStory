@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OceanStory.Objects;
 
 namespace OceanStory
 {
@@ -23,6 +18,7 @@ namespace OceanStory
             itemList.Add(new Item("적응형투구", "적응 하라고 만든 투구", 3, 3, ItemType.HELM));
         }
         
+        // 아이템 리스트 표시
         public void Check()
         {
             while (true)
@@ -54,6 +50,7 @@ namespace OceanStory
             }
         }
 
+        // 아이템 장착
         public void Equip()
         {
             while (true)

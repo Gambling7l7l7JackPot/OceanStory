@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OceanStory.Scenes
+﻿namespace OceanStory.Scenes
 {
+    // 몬스터 공격 화면
     internal class MonsterAttackScene : Scene
     {
         public override void RunScene()
