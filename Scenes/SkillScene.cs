@@ -59,8 +59,14 @@ namespace OceanStory.Scenes
                         Program.ColorManager.ColorText(0);
                         Console.WriteLine("HP {0} -> {1}\n",
                         Program.BattleManager.BothTargetBeforeHp[i],
-                        Program.BattleManager.monsters[i].MonsterDead ?
+                        Program.BattleManager.monsters[i].Hp <= 0?
                         "Dead" : Program.BattleManager.monsters[i].Hp);
+                        if (Program.BattleManager.monsters[i].Hp <= 0)
+                        {
+                            Program.BattleManager.monsters[i].MonsterDead = true;
+                            Program.QuestManager.ProgressQuest(0); // 몬스터 처치 퀘스트 진행도 증가
+                        }
+
                     }
                     Console.WriteLine("\n0. 다음");
                 }

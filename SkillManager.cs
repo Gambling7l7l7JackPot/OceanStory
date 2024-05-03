@@ -13,17 +13,17 @@ namespace OceanStory
         public List<string> getMonster = new List<string>();
         public void WarriorSkill()
         {
-            skillList.Add(new Skill("[1.] Decisive Strike  ㅣ 마나 :",5 , "  ㅣ  검에 기를 모아 적을 내려친다"));
-            skillList.Add(new Skill("[2.] Courage          ㅣ 마나 :",5 , "  ㅣ  데마시아의 가호를 통해 체력을 15 회복한다"));
-            skillList.Add(new Skill("[3.] Judgement        ㅣ 마나 :",10, " ㅣ  빙글빙글 돌며 여러적에게 타격을 준다 "));
-            skillList.Add(new Skill("[4.] Demacian Justice ㅣ 마나 :",30, " ㅣ  데마시아의 힘을 받아 큰 데미지를 준다 "));
+            skillList.Add(new Skill("[1] Decisive Strike  ㅣ 마나 :",5 , "  ㅣ  검에 기를 모아 적을 내려친다"));
+            skillList.Add(new Skill("[2] Courage          ㅣ 마나 :",5 , "  ㅣ  데마시아의 가호를 통해 체력을 15 회복한다"));
+            skillList.Add(new Skill("[3] Judgement        ㅣ 마나 :",10, " ㅣ  빙글빙글 돌며 여러적에게 타격을 준다 "));
+            skillList.Add(new Skill("[4] Demacian Justice ㅣ 마나 :",30, " ㅣ  데마시아의 힘을 받아 큰 데미지를 준다 "));
         }
         public void WizardSkill()
         {
-            skillList.Add(new Skill("[1.] Light Binding      ㅣ 마나 :", 10, " ㅣ  빛의 힘으로 적에게 공격을 한다"));
-            skillList.Add(new Skill("[2.] Prismatic Barrier  ㅣ 마나 :", 10, " ㅣ  빛의 가호를 통해 체력을 20 회복한다"));
-            skillList.Add(new Skill("[3.] Lucent Singularity ㅣ 마나 :", 15, " ㅣ  빛의 구체를 발사하여 두명의 적에게 타격을 준다 "));
-            skillList.Add(new Skill("[4.] Final Spark        ㅣ 마나 :", 40, " ㅣ  눈부신 광선을 발사하여 앞에 있는 모든 적에게 데미지를 준다 "));
+            skillList.Add(new Skill("[1] Light Binding      ㅣ 마나 :", 10, " ㅣ  빛의 힘으로 적에게 공격을 한다"));
+            skillList.Add(new Skill("[2] Prismatic Barrier  ㅣ 마나 :", 10, " ㅣ  빛의 가호를 통해 체력을 20 회복한다"));
+            skillList.Add(new Skill("[3] Lucent Singularity ㅣ 마나 :", 20, " ㅣ  빛의 구체를 발사하여 두명의 적에게 타격을 준다 "));
+            skillList.Add(new Skill("[4] Final Spark        ㅣ 마나 :", 50, " ㅣ  눈부신 광선을 발사하여 앞에 있는 모든 적에게 데미지를 준다 "));
         }
         public void CharacterSkillList()
         {
@@ -69,6 +69,9 @@ namespace OceanStory
                 if (!getMonster.Contains(Program.BattleManager.monsters[input - 1].Name))
                 {
                     getMonster.Add(Program.BattleManager.monsters[input - 1].Name);
+                    getMonster.Add(Program.BattleManager.monsters[input - 1].Name);
+                    getMonster.Add(Program.BattleManager.monsters[input - 1].Name);
+
                 }
                 else
                 {
