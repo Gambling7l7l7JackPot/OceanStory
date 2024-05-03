@@ -14,10 +14,12 @@
         public int MaxHp { get; set; }          // 최대 체력
         public int Exp { get; set; }            // 경험치
         public bool CharacterDead { get; set; } // 플레이어 사망 여부
+        public int Mp { get; set; }             // 플레이어 마나
+        public int MaxMp { get; set; }          // 최대 마나
 
-        public Character(int level, string name, string job, float atk, float def, int hp, int maxHp, int gold, int exp)
+        public Character(string name, string job, float atk, float def, int hp, int maxHp, int mp, int maxMp)
         {
-            Level = level;
+            Level = 1;
             Name = name;
             Job = job;
             Atk = atk;
@@ -25,10 +27,12 @@
             Def = def;
             DefBonus = 0;
             Hp = hp;
-            Gold = gold;
+            Gold = 1500;
             MaxHp = maxHp;
             CharacterDead = false;
-            Exp = exp;
+            Exp = 0;
+            Mp = mp;
+            MaxMp = maxMp;
         }
     }
 }
