@@ -28,7 +28,7 @@
 1. 로그인
 
 ## 화면 구성
-![화면구성](https://github.com/Gambling7l7l7JackPot/OceanStory/assets/93385183/7342e4b8-d129-4320-8a63-a02a77ba1b14)
+![화면구성](https://github.com/Gambling7l7l7JackPot/OceanStory/blob/main/OceanStory%ED%99%94%EB%A9%B4%EA%B5%AC%EC%84%B1.jpg)
 
 ## 추가 설명
 - SceneManager: 화면 전환, 사용자 입력 (조작)
