@@ -14,6 +14,9 @@
                 int input = Program.SceneManager.GetUserInput(6);
                 switch (input)
                 {
+                    case 0:
+                        Environment.Exit(0);
+                        break;
                     // 상태 보기
                     case 1:
                         Program.SceneManager.ChangeScene("StatusScene");
@@ -26,7 +29,7 @@
                             Thread.Sleep(2000);
                             break ;
                         }
-                        else
+                        else // 던전 난이도 선택
                         {
                             Console.Clear();
                             Console.WriteLine("들어갈 던전을 선택해주세요. \n별 갯수에 따라 난이도가 변경 됩니다.\n ");

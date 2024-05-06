@@ -11,17 +11,18 @@ namespace OceanStory
         [JsonInclude]
         public List<Quest> QuestList = new List<Quest>();               // 퀘스트 리스트
         [JsonInclude]
-        public List<Item>[] QuestRewardItemList = new List<Item>[3];    // 퀘스트 보상 아이템 리스트
+        public List<Item>[] QuestRewardItemList = new List<Item>[4];    // 퀘스트 보상 아이템 리스트
 
         public QuestManager()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 QuestRewardItemList[i] = new List<Item>();
             }
 
-            QuestRewardItemList[0].Add(new Item("낡은 검", "마을 주민이 미니언을 잡아준 대가로 선물한 검이다.", 10, null, ItemType.WEAPON));
-            QuestRewardItemList[1].Add(new Item("튼튼해보이는 옷", "못 입고 다니는 게 안타까웠던 주민이 선물한 옷이다.", null, 10, ItemType.ARMOR));
+            QuestRewardItemList[0].Add(new Item("낡은 검         |", "  마을 주민이 미니언을 잡아준 대가로 선물한 검이다  |", 10, null, ItemType.WEAPON));
+            QuestRewardItemList[1].Add(new Item("튼튼해보이는 옷 |", "  못 입고 다니는 게 안타까웠던 주민이 선물한 옷이다 |", null, 10, ItemType.ARMOR));
+            QuestRewardItemList[2].Add(new Item("엑스칼리버      |", "  역대 용사들이 마왕을 봉인한 전설의 검             |", 999, null, ItemType.WEAPON));
 
             QuestList.Add(new Quest("마을을 위협하는 미니언 처치", "이봐! 마을 근처에 미니언들이 너무 많아졌다고 생각하지 않나?\n" +
                 "마을 주민의 안전을 위해서라도 저것들 수를 좀 줄여야 한다고!\n" +
@@ -29,7 +30,10 @@ namespace OceanStory
             QuestList.Add(new Quest("장비를 장착해보자", "떼잉, 쯔쯧... 그렇게 약해빠진 장비를 가지고서 미니언이나 잡겠나?\n" +
                 "좀 더 반듯한 장비를 마련해서 오라고!", "새로운 장비 아무거나 1개 장착", 1, 0, QuestRewardItemList[1], 100));
             QuestList.Add(new Quest("더욱 더 강해지기!", "무언갈 지키기 위해선 강해져야 하는 법이지.\n" +
-                "몬스터를 사냥하고 지금보다 레벨을 올려서 오게나.", "현재보다 레벨 2 증가", 2, 0, QuestRewardItemList[2], 500));
+                "몬스터를 사냥하고 지금보다 레벨을 올려서 오게나.", "현재보다 레벨 2 증가", 2, 0, QuestRewardItemList[3], 500));
+            QuestList.Add(new Quest("멸망의 징조","강한 몬스터가 점점 많아지고 있다네,, 아마 곧 마왕이 부활할 게야.. " +
+                "\n선택받은 자만이 가질 수 있는 검을 얻기 위해선 많은 시련을 견뎌내야 할 것이네,,",
+                "레벨 99 달성", 99, 1, QuestRewardItemList[2], 0));
         }
 
         // 퀘스트 진행도 증가

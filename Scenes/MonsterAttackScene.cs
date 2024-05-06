@@ -5,7 +5,7 @@
     {
         public override void RunScene()
         {
-            while (true)
+            while (true) // 몬스터의 공격 출력 씬
             {
                 Console.Clear();
                 Console.WriteLine("Battle!!");
@@ -24,6 +24,7 @@
                     Program.Character.CharacterDead ?
                     "Dead" : Program.Character.Hp);
                 Console.WriteLine("\n0. 다음");
+
                 int input = Program.SceneManager.GetUserInput(0);
                 if (input == 0) return;
             }

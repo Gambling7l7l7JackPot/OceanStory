@@ -11,10 +11,16 @@
             Program.BattleManager = new BattleManager();
             int Cave = Program.SceneManager.GetUserInput(5);
             Program.BattleManager.MakeEnemy(Cave);  // 입력에 맞는 던전 생성
-            
-            while (true)
+
+            if (Cave <= 0 || Cave > 5) // 잘못된 던전 리턴
             {
-                Program.SkillManager.getMonster.Clear();  // 전투 결과가 정해졌으면 반복문 종료
+                return;
+            }
+            
+            while (true) // 메인 배틀 출력 구문
+            {
+                Program.SkillManager.getMonster.Clear();  // 전투 턴마다 초기화
+                Program.BattleManager.AttacktargetList.Clear(); // 전투 턴마다 초기화
                 if (Program.BattleManager.Winner != 0)
                 {
                     return;
@@ -30,6 +36,22 @@
                     Program.BattleManager.monsters[i].Level,
                     Program.BattleManager.monsters[i].Name,
                     Program.BattleManager.monsters[i].MonsterDead ? "Dead" : "HP " + Program.BattleManager.monsters[i].Hp.ToString());
+                    if (Program.BattleManager.monsters[i].Name == "魔王 [Boss]디아블로")
+                    {
+                        Console.WriteLine(@"  ___------~~~~~~~~~~~----__         .:.         __----~~~~~~~~~~~------___   ");
+                        Console.WriteLine(@"~~ ~--__          ......====\\~~    .:::.    ~~//====......          __--~ ~~ ");
+                        Console.WriteLine(@"        ~\ ...::::~~~~~~  //|||    .:::::.    |||\\  ~~~~~~::::... /~         ");
+                        Console.WriteLine(@"       -~~\_            //  |||***.(:::::).***|||  \\            _/~~-        ");
+                        Console.WriteLine(@"            ~\_        // *******.:|\^^^/|:.******* \\        _/~             ");
+                        Console.WriteLine(@"               \      / ********.::(>: :<)::.******** \      /                ");
+                        Console.WriteLine(@"                \   /  ********.::::\\|//::::.********  \   /                 ");
+                        Console.WriteLine(@"                 \ /   *******.:::::(o o):::::.*******   \ /                  ");
+                        Console.WriteLine(@"                  /.   ******.::::'*|V_V|***`::.******   .\                   ");
+                        Console.WriteLine(@"                    ~~--****.:::'***|___|*****`:.****--~~                     ");
+                        Console.WriteLine(@"                          *.::'***//|___|\\*****`.*                           ");
+                        Console.WriteLine(@"                          .:'  **/##|___|##\**    .                           ");
+                        Console.WriteLine(@"                         .    (v(VVV)___(VVV)v)                               ");
+                    }
                 }
                 Program.ColorManager.ColorText(0);
                 Console.WriteLine("");
@@ -52,6 +74,7 @@
                     Console.WriteLine("3. 아이템 사용");
                     Console.WriteLine("4. 도망가기");
                     input = Program.SceneManager.GetUserInput(4);
+
                     switch (input)
                     {
                         case 1:
@@ -70,50 +93,94 @@
                 // 공격대상을 선택해야 할 때
                 else
                 {
-                    if (useSkill)
+                    if (useSkill) // 스킬사용시
                     {
                         Program.SkillManager.CharacterSkillList();
-                        Console.WriteLine("\n 0. 취소");
+                        Console.WriteLine("\n0. 취소");
 
                         input = Program.SkillManager.GetSkillInput(4);
 
-                        if (0 <= input && input <= 4)
+                        if (0 <= input && input <= 4) // 마나가 없는지 확인
                         {
-                            switch (input)
+                            if (Program.Character.Job == "전사")
                             {
-                                case 1: 
-                                    if(Program.Character.Mp < 4)
-                                    {
-                                        Console.WriteLine("마나가 없습니다.");
-                                        Thread.Sleep(1000);
-                                        noMp = true;
-                                    }
-                                    break;
-                                case 2:
-                                    if (Program.Character.Mp < 4)
-                                    {
-                                        Console.WriteLine("마나가 없습니다.");
-                                        Thread.Sleep(1000);
-                                        noMp = true;
-                                    }
-                                    break;
-                                case 3:;
-                                    if (Program.Character.Mp < 9)
-                                    {
-                                        Console.WriteLine("마나가 없습니다.");
-                                        Thread.Sleep(1000);
-                                        noMp = true;
-                                    }
-                                    break;
-                                case 4:
-                                    if (Program.Character.Mp < 29)
-                                    {
-                                        Console.WriteLine("마나가 없습니다.");
-                                        Thread.Sleep(1000);
-                                        noMp = true;
-                                    }
-                                    break;
+                                switch (input)
+                                {
+                                    case 1:
+                                        if (Program.Character.Mp < 5)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                    case 2:
+                                        if (Program.Character.Mp < 5)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                    case 3:
+                                        ;
+                                        if (Program.Character.Mp < 10)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                    case 4:
+                                        if (Program.Character.Mp < 30)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                }
                             }
+                            else
+                            {
+                                switch (input)
+                                {
+                                    case 1:
+                                        if (Program.Character.Mp < 10)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                    case 2:
+                                        if (Program.Character.Mp < 10)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                    case 3:
+                                        ;
+                                        if (Program.Character.Mp < 20)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                    case 4:
+                                        if (Program.Character.Mp < 50)
+                                        {
+                                            Console.WriteLine("※ 마나가 없습니다.");
+                                            Thread.Sleep(1000);
+                                            noMp = true;
+                                        }
+                                        break;
+                                }
+                            }
+                            
                             if (noMp)
                             {
                                 noMp = false;
@@ -136,9 +203,9 @@
                             }
                         }
                     }
-                    else
+                    else // 일반 공격시
                     {
-                        Console.WriteLine("\n 0. 취소");
+                        Console.WriteLine("\n0. 취소");
 
                         input = Program.SceneManager.GetUserInput(Program.BattleManager.monsters.Count(), "대상을 선택해주세요.", 1);
                         if (0 <= input && input <= Program.BattleManager.monsters.Count())

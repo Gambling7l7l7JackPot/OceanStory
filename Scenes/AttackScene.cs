@@ -5,7 +5,7 @@
     {
         public override void RunScene()
         {
-            while(true)
+            while(true) // 일반 공격 출력 씬
             {
                 Console.Clear();
                 Console.WriteLine("Battle!!");
@@ -27,6 +27,7 @@
                     Program.BattleManager.monsters[Program.BattleManager.TargetIndex].MonsterDead ?
                     "Dead" : Program.BattleManager.monsters[Program.BattleManager.TargetIndex].Hp);
                 Console.WriteLine("\n0. 다음");
+
                 int input = Program.SceneManager.GetUserInput(0);
                 // 이어서 몬스터 공격 차례
                 if (input == 0)

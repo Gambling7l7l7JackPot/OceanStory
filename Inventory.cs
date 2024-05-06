@@ -12,10 +12,10 @@ namespace OceanStory
 
         public Inventory()
         {
-            itemList.Add(new Item("도란검", "굵고 짧은 검", 5, null, ItemType.WEAPON));
-            itemList.Add(new Item("도란링", "마법의 힘이 담긴 반지", 5, null, ItemType.WEAPON));
-            itemList.Add(new Item("천갑옷", "천으로 만들어진 갑옷", null, 2, ItemType.ARMOR));
-            itemList.Add(new Item("적응형투구", "적응 하라고 만든 투구", 3, 3, ItemType.HELM));
+            itemList.Add(new Item("도란검     |", "  굵고 짧은 검            |", 5, null, ItemType.WEAPON));
+            itemList.Add(new Item("도란링     |", "  마법의 힘이 담긴 반지   |", 5, null, ItemType.WEAPON));
+            itemList.Add(new Item("천갑옷     |", "  천으로 만들어진 갑옷    |", null, 2, ItemType.ARMOR));
+            itemList.Add(new Item("적응형투구 |", "  적응 하라고 만든 투구   |", 3, 3, ItemType.HELM));
         }
         
         // 아이템 리스트 표시
@@ -28,11 +28,12 @@ namespace OceanStory
 
                 for (int i = 0; i < itemList.Count; i++)
                 {
+                    Program.ColorManager.ColorText(i+1);
                     string equipMark = itemList[i].IsEquiped ? "[E]" : "";
-                    Console.WriteLine($"{equipMark}{itemList[i].Name} ({itemList[i].Description}){(itemList[i].Atk != null ? infoAtk + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + itemList[i].Def : "")}");
+                    Console.WriteLine($"{equipMark}{itemList[i].Name} {itemList[i].Description}{(itemList[i].Atk != null ? infoAtk + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + itemList[i].Def : "")}");
                     // 장착 유무 + 템이름 + 템설명 + 공격력이 있는 아이템이면 공격력 출력하고 공격력 없는템이면 공백이 뜨도록 함 + 방어력아이템일 경우에만 방어력 수치 뜨도록 함
                 }
-
+                Program.ColorManager.ColorText(0);
                 Console.WriteLine("\n\n0. 돌아가기");
                 Console.WriteLine("1. 아이템 관리");
          
@@ -60,9 +61,11 @@ namespace OceanStory
 
                 for (int i = 0; i < itemList.Count; i++)
                 {
+                    Program.ColorManager.ColorText(i + 1);
                     string equipMark = itemList[i].IsEquiped ? "[E]" : "";
-                    Console.WriteLine($"{i + 1}. {equipMark}{itemList[i].Name} ({itemList[i].Description}){(itemList[i].Atk != null ? infoAtk + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + itemList[i].Def : "")}");
+                    Console.WriteLine($"{i + 1}. {equipMark}{itemList[i].Name} {itemList[i].Description}{(itemList[i].Atk != null ? infoAtk + itemList[i].Atk : "")}{(itemList[i].Def != null ? infoDef + itemList[i].Def : "")}");
                 }
+                Program.ColorManager.ColorText(0);
                 Console.WriteLine("\n\n0. 돌아가기\n");
 
                 int input = Program.SceneManager.GetUserInput(itemList.Count);

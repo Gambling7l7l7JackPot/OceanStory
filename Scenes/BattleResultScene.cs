@@ -5,7 +5,7 @@
     {
         public override void RunScene()
         {
-            while(true)
+            while(true) // 전투 보상 출력 씬
             {
                 Console.Clear();
                 Console.WriteLine("Battle!! - Result");
@@ -15,6 +15,7 @@
                     int beforeExp = Program.RewardManager.CharacterExpUp(); // 메서드를 불러오기전에 이전 경험치를 저장
                     int beforeLevel = Program.RewardManager.CharacterLevelUpCheck(); // 메서드를 불러오기전에 이전 레벨을 저장
                     int beforeGold = Program.RewardManager.CharacterGoldUp(); // 메서드를 불러오기전에 이전 골드를 저장
+
                     Console.WriteLine("\nVictory");
                     Console.WriteLine("\n던전에서 몬스터 {0}마리를 잡았습니다.", Program.BattleManager.monsters.Count());
                     Console.WriteLine("\n[캐릭터 정보]");
@@ -23,7 +24,6 @@
                     Console.WriteLine("MP {0} -> {1}", Program.BattleManager.PlayerStartMp, Program.Character.Mp);
                     Console.WriteLine("Exp {0} -> {1}", beforeExp, Program.Character.Exp);
                     Console.WriteLine("Gold {0} -> {1}", beforeGold, Program.Character.Gold);
-                    Program.Character.Mp += 10;
                 }
                 // 전투 패배
                 else

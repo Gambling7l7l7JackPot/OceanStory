@@ -10,7 +10,7 @@ namespace OceanStory
     internal class SkillManager
     {
         public List<Skill> skillList = new List<Skill>();
-        public List<string> getMonster = new List<string>();
+        public List<int> getMonster = new List<int>();
         public void WarriorSkill()
         {
             skillList.Add(new Skill("[1] Decisive Strike  ㅣ 마나 :",5 , "  ㅣ  검에 기를 모아 적을 내려친다"));
@@ -59,25 +59,27 @@ namespace OceanStory
             string s = Console.ReadLine();
             int input = -1;
             bool b = int.TryParse(s, out input);
-            if (error == 1 && input > 0 && Program.BattleManager.monsters[input - 1].MonsterDead)
+            if (b && (0 < input && input <= maxNum))
             {
-                Program.SystemMessage.SetMessage("이미 죽은 몬스터입니다.");
-                return -1;
-            }
-            if (b && (0 <= input && input <= maxNum))
-            {
-                if (!getMonster.Contains(Program.BattleManager.monsters[input - 1].Name))
+                if (error == 1 && input > 0 && Program.BattleManager.monsters[input - 1].MonsterDead)
                 {
-                    getMonster.Add(Program.BattleManager.monsters[input - 1].Name);
-                    getMonster.Add(Program.BattleManager.monsters[input - 1].Name);
-                    getMonster.Add(Program.BattleManager.monsters[input - 1].Name);
-
+                    Program.SystemMessage.SetMessage("이미 죽은 몬스터입니다.");
+                    return -1;
+                }
+                if (!getMonster.Contains(Program.BattleManager.monsters[input -1].Gold))
+                {
+                    getMonster.Add(Program.BattleManager.monsters[input - 1].Gold);
+                    Program.BattleManager.AttacktargetList.Add(input -1); 
                 }
                 else
                 {
                     Program.SystemMessage.SetMessage("이미 선택한 몬스터입니다.");
                 }
                 return input;
+            }
+            else if (input == 0)
+            {
+                return 0;
             }
             else
             {

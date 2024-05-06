@@ -3,6 +3,14 @@
     // 경험치나 레벨업 관리 매니저
     internal class RewardManager
     {
+        public int[] LevelFull = new int[100]; // 최대 레벨
+        public void MakeLevel()
+        {
+            for (int i = 0; i < LevelFull.Length; i++)
+            {
+                LevelFull[i] = (i+(i+1)) * 10;
+            }
+        }
         // 경험치 증가
         public int CharacterExpUp()
         {
@@ -26,10 +34,9 @@
         public int CharacterLevelUpCheck() 
         {
             int beforeLevel = Program.Character.Level;
-            int[] RequiredExp = { 10, 35, 65, 100 };
-            while (RequiredExp[Program.Character.Level - 1] <= Program.Character.Exp)
+            while (LevelFull[Program.Character.Level - 1] <= Program.Character.Exp)
             {
-                Program.Character.Exp -= RequiredExp[Program.Character.Level - 1];
+                Program.Character.Exp -= LevelFull[Program.Character.Level - 1];
                 CharacterLevelUp();
             }
             return beforeLevel;
@@ -38,11 +45,26 @@
         // 레벨업 (스탯 증가 등)
         public void CharacterLevelUp()
         {
-            Program.Character.MaxHp += 5;
-            Program.Character.Atk += 0.5f;
-            Program.Character.Def += 1;
-            Program.Character.Level += 1;
-            Program.QuestManager.ProgressQuest(2); // 레벨업 증가 퀘스트 진행도 증가
+            if (Program.Character.Job == "전사")
+            {
+                Program.Character.MaxHp += 10;
+                Program.Character.Atk += 2.0f;
+                Program.Character.Def += 1;
+                Program.Character.Level += 1;
+                Program.Character.MaxMp += 5;
+                Program.QuestManager.ProgressQuest(2); // 레벨업 증가 퀘스트 진행도 증가
+                Program.QuestManager.ProgressQuest(3); // 레벨업 증가 퀘스트 진행도 증가
+            }
+            else
+            {
+                Program.Character.MaxHp += 5;
+                Program.Character.Atk += 0.5f;
+                Program.Character.Def += 1;
+                Program.Character.Level += 1;
+                Program.Character.MaxMp += 10;
+                Program.QuestManager.ProgressQuest(2); // 레벨업 증가 퀘스트 진행도 증가
+                Program.QuestManager.ProgressQuest(3); // 레벨업 증가 퀘스트 진행도 증가
+            }
         }
     }
 }
