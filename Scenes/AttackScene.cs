@@ -9,7 +9,7 @@
             {
                 Console.Clear();
                 Console.WriteLine("Battle!!");
-                Console.WriteLine("\n{0}의 {1}", 
+                Console.WriteLine("\n{0}의 {1}",
                     Program.Character.Name,
                     Program.BattleManager.isCriticle != true ? "공격!" : "크리티컬 공격!!");
                 Program.ColorManager.CheckName(Program.BattleManager.TargetIndex);

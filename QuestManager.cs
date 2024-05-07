@@ -20,9 +20,9 @@ namespace OceanStory
                 QuestRewardItemList[i] = new List<Item>();
             }
 
-            QuestRewardItemList[0].Add(new Item("낡은 검         |", "  마을 주민이 미니언을 잡아준 대가로 선물한 검이다  |", 10, null, ItemType.WEAPON));
-            QuestRewardItemList[1].Add(new Item("튼튼해보이는 옷 |", "  못 입고 다니는 게 안타까웠던 주민이 선물한 옷이다 |", null, 10, ItemType.ARMOR));
-            QuestRewardItemList[2].Add(new Item("엑스칼리버      |", "  역대 용사들이 마왕을 봉인한 전설의 검             |", 999, null, ItemType.WEAPON));
+            QuestRewardItemList[0].Add(new Item("낡은 검         ", "|  마을 주민이 미니언을 잡아준 대가로 선물한 검이다   |", 10, null, ItemType.WEAPON));
+            QuestRewardItemList[1].Add(new Item("튼튼해보이는 옷 ", "|  못 입고 다니는 게 안타까웠던 주민이 선물한 옷이다  |", null, 10, ItemType.ARMOR));
+            QuestRewardItemList[2].Add(new Item("엑스칼리버      ", "|  역대 용사들이 마왕을 봉인한 전설의 검              |", 999, null, ItemType.WEAPON));
 
             QuestList.Add(new Quest("마을을 위협하는 미니언 처치", "이봐! 마을 근처에 미니언들이 너무 많아졌다고 생각하지 않나?\n" +
                 "마을 주민의 안전을 위해서라도 저것들 수를 좀 줄여야 한다고!\n" +

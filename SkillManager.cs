@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OceanStory.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace OceanStory
     internal class SkillManager
     {
         public List<Skill> skillList = new List<Skill>();
-        public List<int> getMonster = new List<int>();
+        public List<IMonster> getMonster = new List<IMonster>();
         public void WarriorSkill()
         {
             skillList.Add(new Skill("[1] Decisive Strike  ㅣ 마나 :",5 , "  ㅣ  검에 기를 모아 적을 내려친다"));
@@ -66,9 +67,9 @@ namespace OceanStory
                     Program.SystemMessage.SetMessage("이미 죽은 몬스터입니다.");
                     return -1;
                 }
-                if (!getMonster.Contains(Program.BattleManager.monsters[input -1].Gold))
+                if (!getMonster.Contains(Program.BattleManager.monsters[input -1]))
                 {
-                    getMonster.Add(Program.BattleManager.monsters[input - 1].Gold);
+                    getMonster.Add(Program.BattleManager.monsters[input - 1]);
                     Program.BattleManager.AttacktargetList.Add(input -1); 
                 }
                 else

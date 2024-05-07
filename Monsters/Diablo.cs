@@ -22,10 +22,10 @@ namespace OceanStory.Monsters
             Level = new Random().Next(99, 99);
             Name = name;
             Hp = 900 + Level;
-            Atk = 1 + Level;
+            Atk = 100 + Level;
             MaxHp = 900 + Level;
             MonsterDead = false;
-            Exp = 900 + Level;
+            Exp = 0;
             Gold = 9999 + Level;
         }
     }
