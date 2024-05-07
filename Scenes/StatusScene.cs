@@ -15,7 +15,7 @@
                 Console.WriteLine($"{Program.Character.Name} ( {Program.Character.Job} )");
                 Console.WriteLine($"공격력 : {Program.Character.Atk} (+{Program.Character.AtkBonus})");
                 Console.WriteLine($"방어력 : {Program.Character.Def} (+{Program.Character.DefBonus})");
-                Console.WriteLine($"체 력  : {Program.Character.Hp}");
+                Console.WriteLine("체 력  : {0}", Program.Character.Hp <= 0 ? "0" : Program.Character.Hp);
                 Console.WriteLine($"마 나  : {Program.Character.Mp}");
                 Console.WriteLine($"Gold   : {Program.Character.Gold} G");
                 Console.WriteLine($"Exp    : {Program.Character.Exp}");

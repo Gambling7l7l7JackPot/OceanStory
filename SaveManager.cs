@@ -14,6 +14,7 @@ namespace OceanStory
             saveInfo = JsonSerializer.Serialize(Program.Character);
             saveInfo += ("\n" + JsonSerializer.Serialize(Program.Inventory));
             saveInfo += ("\n" + JsonSerializer.Serialize(Program.QuestManager));
+            saveInfo += ("\n" + JsonSerializer.Serialize(Program.RewardManager));
 
             try
             {
@@ -47,7 +48,7 @@ namespace OceanStory
         {
             string directory = ".\\..\\..\\..\\sav";
             string filePath = directory + "\\" + fileName;
-            string characterInfo, inventoryInfo, questInfo;
+            string characterInfo, inventoryInfo, questInfo, expInfo;
             DirectoryInfo di = new DirectoryInfo(directory);
             FileInfo fi = new FileInfo(filePath);
             try
@@ -63,10 +64,12 @@ namespace OceanStory
                     characterInfo = sr.ReadLine();
                     inventoryInfo = sr.ReadLine();
                     questInfo = sr.ReadLine();
+                    expInfo = sr.ReadLine();
                     sr.Close();
                     Program.Character = JsonSerializer.Deserialize<Character>(characterInfo);
                     Program.Inventory = JsonSerializer.Deserialize<Inventory>(inventoryInfo);
                     Program.QuestManager = JsonSerializer.Deserialize<QuestManager>(questInfo);
+                    Program.RewardManager = JsonSerializer.Deserialize<RewardManager>(expInfo);
                     Program.SystemMessage.SetMessage($"{fileName} 파일 불러오기에 성공했습니다.");
                     return true;
                 }

@@ -1,8 +1,11 @@
-﻿namespace OceanStory
+﻿using System.Text.Json.Serialization;
+
+namespace OceanStory
 {
     // 경험치나 레벨업 관리 매니저
     internal class RewardManager
     {
+        [JsonInclude]
         public int[] LevelFull = new int[100]; // 최대 레벨
         public void MakeLevel()
         {
