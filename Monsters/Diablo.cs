@@ -19,7 +19,7 @@ namespace OceanStory.Monsters
         public int Gold { get; set; }
         public Diablo(string name)
         {
-            Level = new Random().Next(98, 99);
+            Level = new Random().Next(99, 99);
             Name = name;
             Hp = 900 + Level;
             Atk = 1 + Level;

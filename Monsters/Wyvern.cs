@@ -25,7 +25,7 @@ namespace OceanStory.Monsters
             Atk = 20 + Level;
             MaxHp = 100 + Level;
             MonsterDead = false;
-            Exp = 30 + Level;
+            Exp = 2000 + Level;
             Gold = Level * 5;
         }
     }

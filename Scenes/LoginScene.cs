@@ -7,17 +7,19 @@ namespace OceanStory.Scenes
     {
         public override void RunScene()
         {
+            Program.ColorManager.ColorText(3);
             Console.WriteLine(@"________                                        _________  __");
             Console.WriteLine(@"_____  \    ____   ____  _____     ____       /   _____/_/  |_  ____ _______  ___.__. ");
             Console.WriteLine(@" /   |   \ _/ ___\_/ __ \ \__  \   /    \      \_____  \ \   __\/  _ \\_  __ \<   |  |");
             Console.WriteLine(@"/    |    \\  \___\  ___/  / __ \_|   |  \     /        \ |  | (  <_> )|  | \/ \___  |");
             Console.WriteLine(@"\_______  / \___  >\___  >(____  /|___|  /    /_______  / |__|  \____/ |__|    / ____|");
             Console.WriteLine(@"        \/      \/     \/      \/      \/             \/                       \/");
-            Console.WriteLine();
+            Program.ColorManager.ColorText(0);
+            Console.WriteLine("\n");
             Console.WriteLine(" OceanStory 베타 테스터로 참여해주셔서 감사합니다 \n");
             Console.WriteLine(" 당신이 지급받은 키 값입니다 \n\n ID : Ocean           Password : Story");
             Console.WriteLine();
-
+            
             while (true)
             {
                 Console.WriteLine("\n아이디를 입력하세요");
@@ -60,6 +62,8 @@ namespace OceanStory.Scenes
                     Program.nickName = Console.ReadLine();
 
                     Console.WriteLine("\n 직업을 선택하세요 \n\n 1. 전사          2. 마법사");
+                    Console.WriteLine();
+                    Console.Write("▶ ");
                     int choiceJob;
                     int.TryParse(Console.ReadLine(), out choiceJob);
                     Character character = null; // null로 초기화

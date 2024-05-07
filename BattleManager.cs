@@ -8,7 +8,7 @@ namespace OceanStory
     {
         public List<IMonster> monsters = new List<IMonster>();                       // 몬스터 리스트
         public List<int> AttacktargetList = new List<int>();                         // 타켓 정하기
-        public int[] TwoTargetBeforeHp;                             // 두명 이상 셋 이하의 공격 목표를 저장 
+        public int[] TwoTargetBeforeHp;                                              // 두명 이상 셋 이하의 공격 목표를 저장 
         public int TargetIndex, TargetDamage, SoloTarget;                            // 공격 목표, 목표에 대한의 데미지, 공격 목표의 수 저장
         public int[] TargetBothIndexLevel, TargetBothIndexHp, BothTargetBeforeHp;    // 공격 목표의 레벨 체력, 공격 시작 전 체력을 배열로 저장 (스킬)
         public string[] TargetBothIndexName;                                         // 공격 목표에 대한 이름을 배열로 저장 (스킬)

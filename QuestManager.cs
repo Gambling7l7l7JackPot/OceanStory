@@ -33,7 +33,7 @@ namespace OceanStory
                 "몬스터를 사냥하고 지금보다 레벨을 올려서 오게나.", "현재보다 레벨 2 증가", 2, 0, QuestRewardItemList[3], 500));
             QuestList.Add(new Quest("멸망의 징조","강한 몬스터가 점점 많아지고 있다네,, 아마 곧 마왕이 부활할 게야.. " +
                 "\n선택받은 자만이 가질 수 있는 검을 얻기 위해선 많은 시련을 견뎌내야 할 것이네,,",
-                "레벨 99 달성", 99, 1, QuestRewardItemList[2], 0));
+                "레벨 99 달성", 99, 97, QuestRewardItemList[2], 0));
         }
 
         // 퀘스트 진행도 증가
